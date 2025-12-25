@@ -225,7 +225,8 @@ app.get("/api/my-latest", authRequired, async (req, res) => {
 
   if (!row) return res.status(404).json({ error: "Sem respostas." });
 
-  row.answersById = row.answersbyid || row.answersById;
+  // Normalize JSONB
+  if (!row.answersById && row.answersbyid) row.answersById = row.answersbyid;
   if (typeof row.answersById === "string") row.answersById = JSON.parse(row.answersById);
   res.json(row);
 });
@@ -342,7 +343,7 @@ app.get("/api/admin/user/:id", authRequired, adminOnly, async (req, res) => {
   if (!user) return res.status(404).json({ error: "Usuário não encontrado." });
 
   const latest = await queryOne(`
-    SELECT id, created_at, answers_json as answersById, S_M, S_C, S_R, w_M, w_C, w_R, x, y
+    SELECT id, created_at, answersById AS "answersById", S_M AS "S_M", S_C AS "S_C", S_R AS "S_R", w_M AS "w_M", w_C AS "w_C", w_R AS "w_R", x, y
     FROM submissions
     WHERE user_id = $1
     ORDER BY created_at DESC
@@ -350,7 +351,7 @@ app.get("/api/admin/user/:id", authRequired, adminOnly, async (req, res) => {
   `, [userId]);
 
   if (latest) {
-    latest.answersById = latest.answersbyid || latest.answersById;
+    if (!latest.answersById && latest.answersbyid) latest.answersById = latest.answersbyid;
     if (typeof latest.answersById === "string") latest.answersById = JSON.parse(latest.answersById);
   }
 
@@ -359,7 +360,15 @@ app.get("/api/admin/user/:id", authRequired, adminOnly, async (req, res) => {
 
 app.get("/api/admin/aggregate", authRequired, adminOnly, async (req, res) => {
   const rows = await queryAll(`
-    SELECT S_M, S_C, S_R, w_M, w_C, w_R, x, y
+    SELECT
+      S_M AS "S_M",
+      S_C AS "S_C",
+      S_R AS "S_R",
+      w_M AS "w_M",
+      w_C AS "w_C",
+      w_R AS "w_R",
+      x,
+      y
     FROM submissions
   `, []);
 
@@ -378,7 +387,7 @@ app.get("/api/admin/aggregate", authRequired, adminOnly, async (req, res) => {
     w_M: avg("w_M"),
     w_C: avg("w_C"),
     w_R: avg("w_R"),
-    points: rows.map(r => ({ x: r.x, y: r.y }))
+    points: rows.map(r => ({ x: Number(r.x), y: Number(r.y) }))
   });
 });
 
