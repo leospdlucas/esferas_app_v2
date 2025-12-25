@@ -183,6 +183,10 @@ app.post("/api/submit", authRequired, async (req, res) => {
   const { w_M, w_C, w_R } = normalizeAffinities(S_M, S_C, S_R);
   const { x, y } = computeTriangleCoords(w_M, w_C, w_R);
 
+  if (req.user.role === "admin") {
+    return res.status(403).json({ error: "Admins não podem enviar respostas. Crie um usuário comum para responder." });
+  }
+
   // Overwrite: keep only the most recent submission per user
   // overwrite previous submission (most recent wins)
 
@@ -204,9 +208,9 @@ app.post("/api/submit", authRequired, async (req, res) => {
 `, [
   req.user.id,
   JSON.stringify(answersById),
-  scores.S_M, scores.S_C, scores.S_R,
-  affin.w_M, affin.w_C, affin.w_R,
-  point.x, point.y
+  S_M, S_C, S_R,
+  w_M, w_C, w_R,
+  x, y
 ]);
 res.json({ ok: true });
 });

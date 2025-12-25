@@ -77,7 +77,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Prevent free hosting from sleeping while the user is answering
   setInterval(() => { fetch("/api/ping").catch(() => {}); }, KEEP_ALIVE_MS);
 
-  await requireAuth();
+  const me = await requireAuth();
+  if (me && me.role === "admin") {
+    window.location.href = "/admin-dashboard.html";
+    return;
+  }
   await loadQuestions();
 
   document.getElementById("logout").addEventListener("click", (e) => {

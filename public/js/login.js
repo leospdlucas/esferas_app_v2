@@ -16,6 +16,7 @@ async function goNext() {
     window.location.href = "/quiz.html";
   }
 }
+}
 
 document.addEventListener("DOMContentLoaded", async () => {
   const url = new URL(window.location.href);

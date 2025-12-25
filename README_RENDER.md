@@ -26,3 +26,8 @@ Depois disso, gere o QR Code no menu do admin e use o `.onrender.com` para compa
 
 ### Keep-alive (Free tier)
 - Enquanto o usuário preenche um questionário longo, o frontend faz `GET /api/ping` a cada 5 minutos para reduzir chance de o serviço “dormir” durante o preenchimento.
+
+
+## Notas
+- Admin é redirecionado para `/admin-dashboard.html` após login e não envia respostas.
+- O endpoint `/api/ping` é chamado periodicamente durante o questionário para reduzir erros 502 no free tier.
