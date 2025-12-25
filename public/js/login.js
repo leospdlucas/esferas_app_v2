@@ -9,13 +9,18 @@ function setMsg(id, text) {
 }
 
 async function goNext() {
-  const me = await apiFetch("/api/me");
+  let me;
+  try {
+    me = await apiFetch("/api/me");
+  } catch (e) {
+    setMsg("login-msg", "Falha ao validar sessão. Tente novamente.");
+    return;
+  }
   if (me.role === "admin") {
     window.location.href = "/admin-dashboard.html";
   } else {
     window.location.href = "/quiz.html";
   }
-}
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
