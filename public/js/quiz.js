@@ -1,6 +1,8 @@
 import { apiFetch, requireAuth, clearToken } from "./auth.js";
 import { likertMap } from "./scoring.js";
 
+const KEEP_ALIVE_MS = 5 * 60 * 1000; // 5 minutes
+
 let questions = [];
 
 function renderQuestions() {
@@ -72,6 +74,9 @@ function collectAnswers() {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
+  // Prevent free hosting from sleeping while the user is answering
+  setInterval(() => { fetch("/api/ping").catch(() => {}); }, KEEP_ALIVE_MS);
+
   await requireAuth();
   await loadQuestions();
 

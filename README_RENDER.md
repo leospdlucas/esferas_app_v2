@@ -22,3 +22,7 @@ o servidor vai garantir (upsert) que esse usuário exista e tenha role `admin` a
 4) Deploy.
 
 Depois disso, gere o QR Code no menu do admin e use o `.onrender.com` para compartilhar.
+
+
+### Keep-alive (Free tier)
+- Enquanto o usuário preenche um questionário longo, o frontend faz `GET /api/ping` a cada 5 minutos para reduzir chance de o serviço “dormir” durante o preenchimento.

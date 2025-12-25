@@ -84,6 +84,12 @@ await seedAdmin();
 app.use(morgan("dev"));
 app.use(express.json({ limit: "1mb" }));
 
+// Keep-alive endpoint (helps free tiers that sleep after inactivity)
+app.get("/api/ping", (req, res) => {
+  res.json({ ok: true, ts: Date.now() });
+});
+
+
 // Static
 app.use(express.static(path.join(process.cwd(), "public")));
 
