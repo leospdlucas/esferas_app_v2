@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>DTE · Questionário</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Diagrama de Tendência Esferal (DTE)</h1>
+
+    <div class="card">
+      <p>
+        Responda todas as afirmações e clique em <strong>Enviar e ver resultado</strong>.
+      </p>
+      <p class="scale-legend" id="status-msg">Carregando perguntas...</p>
+      <p class="scale-legend">
+        <a href="/result.html" style="color:#a5b4fc;text-decoration:none;">Ver meu último resultado</a> ·
+        <a href="#" id="logout" style="color:#a5b4fc;text-decoration:none;">Sair</a>
+      </p>
+    </div>
+
+    <form id="quiz-form" class="card"></form>
+    <button type="button" id="submit-btn" disabled>Enviar e ver resultado</button>
+    <p id="submit-msg" class="scale-legend"></p>
+  </main>
+
+  <script type="module" src="/js/quiz.js"></script>
+</body>
+</html>

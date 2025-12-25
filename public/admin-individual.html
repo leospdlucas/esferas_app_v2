@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>DTE · Admin · Resultado Individual</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Admin · Resultado individual (busca)</h1>
+
+    <div class="card">
+      <p class="scale-legend">
+        <a href="/admin-dashboard.html" style="color:#a5b4fc;text-decoration:none;">Voltar ao painel</a> ·
+        <a href="/aggregate.html" style="color:#a5b4fc;text-decoration:none;">Ver agregado</a> ·
+        <a href="#" id="logout" style="color:#a5b4fc;text-decoration:none;">Sair</a>
+      </p>
+      <p class="scale-legend" id="status">Digite parte do nome ou e-mail para buscar.</p>
+    </div>
+
+    <div class="card">
+      <h2>Buscar</h2>
+      <div class="question-card">
+        <p class="question-text">Nome ou e-mail (parcial)</p>
+        <input id="q" type="text" placeholder="Ex: maria ou @gmail"
+          style="width:100%;padding:10px;border-radius:10px;border:1px solid #1f2937;background:#020617;color:#e5e7eb;"/>
+      </div>
+      <button type="button" id="search">Buscar</button>
+      <p class="scale-legend" id="msg"></p>
+    </div>
+
+    <div class="card">
+      <h2>Resultados</h2>
+      <div id="results"></div>
+    </div>
+
+    <div class="card" id="detail-card" style="display:none;">
+      <h2>Detalhes</h2>
+      <p class="scale-legend" id="detail-title"></p>
+
+      <div class="results-grid">
+        <div class="result-box">
+          <div class="result-title">Segurança · Estirpe Pátria</div>
+          <div>Média: <span id="d-score-M" class="result-value"></span></div>
+          <div>Perfil: <span id="d-label-M"></span></div>
+          <div>Participação: <span id="d-weight-M"></span></div>
+        </div>
+        <div class="result-box">
+          <div class="result-title">Prosperidade · Ventos Áureo</div>
+          <div>Média: <span id="d-score-C" class="result-value"></span></div>
+          <div>Perfil: <span id="d-label-C"></span></div>
+          <div>Participação: <span id="d-weight-C"></span></div>
+        </div>
+        <div class="result-box">
+          <div class="result-title">Sentido · Sociedade da Fé</div>
+          <div>Média: <span id="d-score-R" class="result-value"></span></div>
+          <div>Perfil: <span id="d-label-R"></span></div>
+          <div>Participação: <span id="d-weight-R"></span></div>
+        </div>
+      </div>
+
+      <h3>Triângulo</h3>
+      <canvas id="triangle-canvas" width="600" height="420"></canvas>
+
+      <h3>Respostas brutas</h3>
+      <pre id="raw" style="white-space:pre-wrap;background:#020617;border:1px solid #1f2937;border-radius:12px;padding:12px;"></pre>
+    </div>
+  </main>
+
+  <script type="module" src="/js/admin-individual.js"></script>
+</body>
+</html>

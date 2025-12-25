@@ -1,0 +1,20 @@
+{
+  "name": "dte-webproject",
+  "version": "1.0.0",
+  "description": "Diagrama de Tendência Esferal (DTE) - cadastro, respostas por usuário, admin e agregado.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "qrcode": "^1.5.4",
+    "pg": "^8.13.1"
+  }
+}

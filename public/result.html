@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>DTE · Meu Resultado</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Meu resultado</h1>
+
+    <div class="card">
+      <p>
+        Aqui está o seu resultado mais recente.
+      </p>
+      <p class="scale-legend">
+        <a href="/quiz.html" style="color:#a5b4fc;text-decoration:none;">Responder novamente</a> ·
+        <a href="#" id="logout" style="color:#a5b4fc;text-decoration:none;">Sair</a>
+      </p>
+      <p class="scale-legend" id="status-msg">Carregando...</p>
+    </div>
+
+    <section id="results" class="results visible">
+      <div class="card">
+        <h2>Resultado</h2>
+        <div class="results-grid">
+          <div class="result-box">
+            <div class="result-title">Segurança · Estirpe Pátria</div>
+            <div>Média: <span id="score-M" class="result-value"></span></div>
+            <div>Perfil: <span id="label-M"></span></div>
+            <div>Participação no triângulo: <span id="weight-M"></span></div>
+          </div>
+          <div class="result-box">
+            <div class="result-title">Prosperidade · Ventos Áureo</div>
+            <div>Média: <span id="score-C" class="result-value"></span></div>
+            <div>Perfil: <span id="label-C"></span></div>
+            <div>Participação no triângulo: <span id="weight-C"></span></div>
+          </div>
+          <div class="result-box">
+            <div class="result-title">Sentido · Sociedade da Fé</div>
+            <div>Média: <span id="score-R" class="result-value"></span></div>
+            <div>Perfil: <span id="label-R"></span></div>
+            <div>Participação no triângulo: <span id="weight-R"></span></div>
+          </div>
+        </div>
+        <p>
+          Esfera dominante identificada:
+          <span id="dominant-esfera" class="highlight"></span>
+        </p>
+
+        <h3>Triângulo</h3>
+        <p style="font-size:0.9rem;color:#9ca3af;">
+          O ponto abaixo mostra sua posição relativa entre as três Esferas.
+        </p>
+        <canvas id="triangle-canvas" width="600" height="420"></canvas>
+      </div>
+    </section>
+
+    <div id="admin-links" class="card" style="display:none;">
+      <h2>Administração</h2>
+      <p class="scale-legend">
+        <a href="/admin-dashboard.html" style="color:#a5b4fc;text-decoration:none;">Abrir painel do admin</a>
+      </p>
+    </div>
+  </main>
+
+  <script type="module" src="/js/result.js"></script>
+</body>
+</html>

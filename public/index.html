@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>DTE · Acesso</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Diagrama de Tendência Esferal (DTE)</h1>
+
+    <div class="card">
+      <p>
+        Faça login ou crie seu cadastro para responder o questionário.
+      </p>
+      <p class="scale-legend">
+        Observação: esta aplicação precisa estar rodando em um servidor (Node) para armazenar respostas.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Entrar</h2>
+      <form id="login-form">
+        <div class="question-card">
+          <p class="question-text">E-mail</p>
+          <input id="login-email" type="email" required style="width:100%;padding:10px;border-radius:10px;border:1px solid #1f2937;background:#020617;color:#e5e7eb;"/>
+        </div>
+        <div class="question-card">
+          <p class="question-text">Senha</p>
+          <input id="login-password" type="password" required minlength="6" style="width:100%;padding:10px;border-radius:10px;border:1px solid #1f2937;background:#020617;color:#e5e7eb;"/>
+        </div>
+        <button type="submit">Entrar</button>
+      </form>
+      <p id="login-msg" class="scale-legend"></p>
+    </div>
+
+    <div class="card">
+      <h2>Criar cadastro</h2>
+      <form id="register-form">
+        <div class="question-card">
+          <p class="question-text">Nome</p>
+          <input id="reg-name" type="text" required minlength="2" style="width:100%;padding:10px;border-radius:10px;border:1px solid #1f2937;background:#020617;color:#e5e7eb;"/>
+        </div>
+        <div class="question-card">
+          <p class="question-text">E-mail</p>
+          <input id="reg-email" type="email" required style="width:100%;padding:10px;border-radius:10px;border:1px solid #1f2937;background:#020617;color:#e5e7eb;"/>
+        </div>
+        <div class="question-card">
+          <p class="question-text">Senha</p>
+          <input id="reg-password" type="password" required minlength="6" style="width:100%;padding:10px;border-radius:10px;border:1px solid #1f2937;background:#020617;color:#e5e7eb;"/>
+        </div>
+        <button type="submit">Criar conta</button>
+      </form>
+      <p id="reg-msg" class="scale-legend"></p>
+    </div>
+  </main>
+
+  <script type="module" src="/js/login.js"></script>
+</body>
+</html>

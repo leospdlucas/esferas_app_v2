@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: dte-webproject
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DATABASE_SSL
+        value: "true"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: dte-db
+          property: connectionString
+      # Ajuste abaixo (ou remova) e configure no Dashboard se preferir:
+      - key: ADMIN_EMAIL
+        value: admin@exemplo.com
+      - key: ADMIN_PASSWORD
+        value: admin123
+      - key: ADMIN_NAME
+        value: Administrador
+
+databases:
+  - name: dte-db
+    plan: free

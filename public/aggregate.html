@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>DTE · Admin · Agregado</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Admin · Agregado do diagrama</h1>
+
+    <div class="card">
+      <p class="scale-legend">
+        Esta tela mostra o resultado agregado (médias) e o diagrama com todos os respondentes.
+        <br/>
+        <a href="/admin.html" style="color:#a5b4fc;text-decoration:none;">Respostas por usuário</a> ·
+        <a href="/result.html" style="color:#a5b4fc;text-decoration:none;">Voltar</a> ·
+        <a href="#" id="logout" style="color:#a5b4fc;text-decoration:none;">Sair</a>
+      </p>
+      <p class="scale-legend" id="status">Carregando...</p>
+    </div>
+
+    <div class="card">
+      <h2>Resumo agregado</h2>
+      <div class="results-grid">
+        <div class="result-box">
+          <div class="result-title">Segurança · Estirpe Pátria</div>
+          <div>Média: <span id="score-M" class="result-value"></span></div>
+          <div>Participação: <span id="weight-M"></span></div>
+        </div>
+        <div class="result-box">
+          <div class="result-title">Prosperidade · Ventos Áureo</div>
+          <div>Média: <span id="score-C" class="result-value"></span></div>
+          <div>Participação: <span id="weight-C"></span></div>
+        </div>
+        <div class="result-box">
+          <div class="result-title">Sentido · Sociedade da Fé</div>
+          <div>Média: <span id="score-R" class="result-value"></span></div>
+          <div>Participação: <span id="weight-R"></span></div>
+        </div>
+      </div>
+      <p>
+        Total de respondentes: <span id="n" class="highlight"></span>
+      </p>
+      <h3>Triângulo (todos os respondentes + ponto agregado)</h3>
+      <canvas id="triangle-canvas" width="600" height="420"></canvas>
+    </div>
+  </main>
+
+  <script type="module" src="/js/aggregate.js"></script>
+</body>
+</html>

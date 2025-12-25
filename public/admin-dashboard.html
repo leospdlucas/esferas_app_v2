@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>DTE · Admin · Painel</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Painel do Administrador</h1>
+
+    <div class="card">
+      <p class="scale-legend" id="welcome">Carregando...</p>
+      <p class="scale-legend">
+        <a href="#" id="logout" style="color:#a5b4fc;text-decoration:none;">Sair</a>
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Menu</h2>
+
+      <div class="question-card" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+        <div>
+          <div style="font-weight:600;">Acessar questionário</div>
+          <div class="scale-legend">Responder e ver resultado como qualquer usuário.</div>
+        </div>
+        <a class="button" href="/quiz.html" style="text-decoration:none;">Abrir</a>
+      </div>
+
+      <div class="question-card" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+        <div>
+          <div style="font-weight:600;">Gerar convite (QR Code)</div>
+          <div class="scale-legend">Gerar QR Code público para convidar respondentes.</div>
+        </div>
+        <a class="button" href="/invites.html" style="text-decoration:none;">Abrir</a>
+      </div>
+
+      <div class="question-card" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+        <div>
+          <div style="font-weight:600;">Resultado geral (agregado)</div>
+          <div class="scale-legend">Diagrama com todos os respondentes + ponto médio.</div>
+        </div>
+        <a class="button" href="/aggregate.html" style="text-decoration:none;">Abrir</a>
+      </div>
+
+      <div class="question-card" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+        <div>
+          <div style="font-weight:600;">Resultado individual (busca)</div>
+          <div class="scale-legend">Buscar por nome/e-mail (parcial) e ver resultado do usuário.</div>
+        </div>
+        <a class="button" href="/admin-individual.html" style="text-decoration:none;">Abrir</a>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="/js/admin-dashboard.js"></script>
+</body>
+</html>
