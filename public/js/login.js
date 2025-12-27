@@ -9,13 +9,7 @@ function setMsg(id, text) {
 }
 
 async function goNext() {
-  let me;
-  try {
-    me = await apiFetch("/api/me");
-  } catch (e) {
-    setMsg("login-msg", "Falha ao validar sessão. Tente novamente.");
-    return;
-  }
+  const me = await apiFetch("/api/me");
   if (me.role === "admin") {
     window.location.href = "/admin-dashboard.html";
   } else {

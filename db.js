@@ -1,64 +1,61 @@
-import { Pool } from "pg";
+import Database from "better-sqlite3";
+import fs from "fs";
+import path from "path";
 
-function requireEnv(name) {
-  const v = process.env[name];
-  if (!v || !String(v).trim()) {
-    throw new Error(`Falta ${name}. Configure nas variáveis de ambiente.`);
-  }
-  return v;
-}
+const dataDir = path.join(process.cwd(), "data");
+if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
 
-export const pool = new Pool({
-  connectionString: requireEnv("DATABASE_URL"),
-  // Render Postgres requires SSL for external connections; internal URLs may still work without,
-  // but enabling SSL is safe for managed DBs.
-  ssl: process.env.DATABASE_SSL === "false" ? false : { rejectUnauthorized: false }
-});
+const dbPath = path.join(dataDir, "app.db");
+export const db = new Database(dbPath);
 
-export async function migrate() {
-  // Tables
-  await pool.query(`
+export function migrate() {
+  db.exec(`
+    PRAGMA journal_mode = WAL;
+
     CREATE TABLE IF NOT EXISTS users (
-      id SERIAL PRIMARY KEY,
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT NOT NULL,
       email TEXT NOT NULL UNIQUE,
       password_hash TEXT NOT NULL,
       role TEXT NOT NULL DEFAULT 'user',
-      invite_id INTEGER NULL,
-      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+      created_at TEXT NOT NULL DEFAULT (datetime('now'))
     );
-  `);
 
-  await pool.query(`
+
+    -- Add invite_id to users (ignore if exists)
+    -- SQLite: conditional add via try/catch in JS (handled in server.js migrate helper)
+
     CREATE TABLE IF NOT EXISTS invites (
-      id SERIAL PRIMARY KEY,
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
       code TEXT NOT NULL UNIQUE,
-      created_by INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-      expires_at TIMESTAMPTZ NULL,
+      created_by INTEGER NOT NULL,
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      expires_at TEXT NULL,
       max_uses INTEGER NOT NULL DEFAULT 0,
-      uses INTEGER NOT NULL DEFAULT 0
+      uses INTEGER NOT NULL DEFAULT 0,
+      FOREIGN KEY (created_by) REFERENCES users(id)
     );
-  `);
 
-  await pool.query(`
+    CREATE INDEX IF NOT EXISTS idx_invites_code ON invites(code);
+
     CREATE TABLE IF NOT EXISTS submissions (
-      id SERIAL PRIMARY KEY,
-      user_id INTEGER NOT NULL UNIQUE REFERENCES users(id) ON DELETE CASCADE,
-      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-      answersById JSONB NOT NULL,
-      S_M DOUBLE PRECISION NOT NULL,
-      S_C DOUBLE PRECISION NOT NULL,
-      S_R DOUBLE PRECISION NOT NULL,
-      w_M DOUBLE PRECISION NOT NULL,
-      w_C DOUBLE PRECISION NOT NULL,
-      w_R DOUBLE PRECISION NOT NULL,
-      x DOUBLE PRECISION NOT NULL,
-      y DOUBLE PRECISION NOT NULL
-    );
-  `);
 
-  await pool.query(`CREATE INDEX IF NOT EXISTS idx_invites_code ON invites(code);`);
-  await pool.query(`CREATE INDEX IF NOT EXISTS idx_users_created_at ON users(created_at DESC);`);
-  await pool.query(`CREATE INDEX IF NOT EXISTS idx_invites_created_at ON invites(created_at DESC);`);
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_id INTEGER NOT NULL,
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      answers_json TEXT NOT NULL,
+      S_M REAL NOT NULL,
+      S_C REAL NOT NULL,
+      S_R REAL NOT NULL,
+      w_M REAL NOT NULL,
+      w_C REAL NOT NULL,
+      w_R REAL NOT NULL,
+      x REAL NOT NULL,
+      y REAL NOT NULL,
+      FOREIGN KEY (user_id) REFERENCES users(id)
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_submissions_user_id_created_at
+      ON submissions(user_id, created_at DESC);
+  `);
 }
