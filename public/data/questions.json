@@ -2,226 +2,151 @@
   {
     "id": 1,
     "axis": "M",
-    "text": "Segurança acima da liberdade: Se eu tivesse que escolher, preferiria viver em uma sociedade muito segura (com baixa criminalidade e estabilidade), mesmo que isso significasse ter menos liberdade pessoal, do que em uma sociedade totalmente livre, mas perigosa e instável."
+    "text": "Segurança acima da liberdade: Se eu tivesse que escolher, preferiria viver em uma sociedade muito segura (com baixa criminalidade e estabilidade), mesmo que isso significasse ter menos liberdade pessoal."
   },
   {
     "id": 2,
     "axis": "M",
-    "text": "Vigilância para proteção: Considero aceitável que o governo monitore comunicações privadas (como mensagens e ligações) se isso ajudar a prevenir ataques terroristas ou outras ameaças graves à segurança nacional."
+    "text": "Vigilância para proteção: Considero aceitável que o governo monitore comunicações privadas se isso ajudar a prevenir ataques terroristas ou outras ameaças graves à segurança nacional."
   },
   {
     "id": 3,
     "axis": "M",
-    "text": "Lealdade à pátria: Traição à pátria — como espionagem para países inimigos ou sabotagem de interesses nacionais — é um dos piores crimes que alguém pode cometer, tão grave quanto crimes violentos."
+    "text": "Lealdade à pátria: Traição à pátria — como espionagem ou sabotagem de interesses nacionais — é um dos piores crimes que alguém pode cometer."
   },
   {
     "id": 4,
     "axis": "M",
-    "text": "Serviço militar obrigatório: O serviço militar obrigatório é uma instituição importante porque ajuda a formar cidadãos mais disciplinados, patriotas e com senso de responsabilidade coletiva."
+    "text": "Valor da hierarquia: A obediência a ordens de superiores hierárquicos é um valor essencial em organizações importantes. Questionar demais prejudica o funcionamento."
   },
   {
     "id": 5,
     "axis": "M",
-    "text": "Unidade nacional primeiro: A identidade nacional (ser brasileiro, por exemplo) deve ser mais importante que identidades regionais, culturais ou individuais. A unidade do país vem em primeiro lugar."
+    "text": "Poderes de emergência: Em situações de emergência nacional, o governo deve poder suspender temporariamente alguns direitos constitucionais para agir com rapidez."
   },
   {
     "id": 6,
     "axis": "M",
-    "text": "Valor da obediência: A obediência a ordens de superiores hierárquicos é um valor essencial em organizações importantes como exército, polícia e empresas. Questionar demais prejudica o funcionamento."
+    "text": "Respeito aos símbolos nacionais: O respeito a símbolos nacionais como a bandeira e o hino deve ser exigido de todos os cidadãos."
   },
   {
     "id": 7,
     "axis": "M",
-    "text": "Honra aos heróis militares: Pessoas que arriscaram suas vidas em combate ou serviço militar merecem mais honra e reconhecimento público do que empresários bem-sucedidos ou celebridades."
+    "text": "Demonstração de força: Uma nação que não demonstra força militar e firmeza acaba sendo desrespeitada por outras nações."
   },
   {
     "id": 8,
     "axis": "M",
-    "text": "Poderes de emergência: Em situações de emergência nacional (como pandemias, guerras ou crises graves), o governo deve poder suspender temporariamente alguns direitos constitucionais para agir com rapidez."
+    "text": "Estado forte contra o crime: Quando o Estado é fraco, grupos criminosos e movimentos extremistas acabam assumindo o controle de comunidades."
   },
   {
     "id": 9,
     "axis": "M",
-    "text": "Controle rígido de fronteiras: As fronteiras nacionais devem ser rigidamente controladas com verificações minuciosas, mesmo que isso cause filas e dificulte a vida de viajantes e comerciantes comuns."
+    "text": "Estabilidade política: A estabilidade política é mais importante do que a alternância constante de partidos e ideias no poder."
   },
   {
     "id": 10,
     "axis": "M",
-    "text": "Respeito aos símbolos nacionais: O respeito a símbolos nacionais como a bandeira, o hino e o brasão deve ser exigido de todos os cidadãos, com punições para quem os desrespeitar publicamente."
+    "text": "Liberdade através da proteção: Uma sociedade só é verdadeiramente livre quando está bem protegida contra ameaças externas e internas."
   },
   {
     "id": 11,
-    "axis": "M",
-    "text": "Demonstração de força: Uma nação que não demonstra força militar e firmeza acaba sendo desrespeitada e eventualmente dominada ou explorada por outras nações mais poderosas."
+    "axis": "C",
+    "text": "Menos intervenção estatal: Quanto menos o governo se intromete na economia, melhor para o crescimento econômico e para a prosperidade de todos."
   },
   {
     "id": 12,
-    "axis": "M",
-    "text": "Eficiência da hierarquia: A organização hierárquica (com chefes, subordinados e cadeia de comando clara) é a maneira mais eficiente de organizar grandes grupos humanos, melhor que sistemas horizontais."
+    "axis": "C",
+    "text": "Recompensa pelo risco: Pessoas que assumem riscos financeiros ao criar empresas merecem ficar muito mais ricas, pois estão gerando empregos e riqueza."
   },
   {
     "id": 13,
-    "axis": "M",
-    "text": "Estado forte contra o crime: Quando o Estado é fraco e não consegue impor sua autoridade, grupos criminosos (máfias, tráfico) e movimentos extremistas acabam assumindo o controle de comunidades."
+    "axis": "C",
+    "text": "Impostos prejudicam o crescimento: Impostos altos atrapalham o crescimento econômico porque tiram dinheiro de quem produz e investe."
   },
   {
     "id": 14,
-    "axis": "M",
-    "text": "Estabilidade política: A estabilidade política (manter as mesmas instituições e lideranças por mais tempo) é mais importante do que a alternância constante de partidos e ideias no poder."
+    "axis": "C",
+    "text": "Desigualdade natural: É natural que exista desigualdade de renda, pois cada pessoa colhe os resultados do próprio esforço, talento e escolhas."
   },
   {
     "id": 15,
-    "axis": "M",
-    "text": "Liberdade através da proteção: Uma sociedade só é verdadeiramente livre quando está bem protegida contra ameaças — tanto de inimigos externos (outros países) quanto internos (criminosos, terroristas)."
+    "axis": "C",
+    "text": "Benefícios da competição: A livre concorrência entre empresas é a melhor forma de melhorar produtos, reduzir preços e estimular a inovação."
   },
   {
     "id": 16,
     "axis": "C",
-    "text": "Menos intervenção estatal: Quanto menos o governo se intromete na economia — com regulações, impostos e controles —, melhor para o crescimento econômico e para a prosperidade de todos."
+    "text": "Responsabilidade financeira pessoal: As pessoas são, em grande parte, responsáveis por sua própria situação financeira — suas escolhas determinam seu sucesso."
   },
   {
     "id": 17,
     "axis": "C",
-    "text": "Recompensa pelo risco: Pessoas que assumem riscos financeiros ao criar empresas e negócios merecem ficar muito mais ricas que funcionários comuns, pois estão gerando empregos e riqueza para a sociedade."
+    "text": "Empreender é direito fundamental: A liberdade para empreender é um direito fundamental tão importante quanto a liberdade de expressão."
   },
   {
     "id": 18,
     "axis": "C",
-    "text": "Impostos prejudicam o crescimento: Impostos altos atrapalham o crescimento econômico porque tiram dinheiro de quem produz e investe, punindo justamente as pessoas mais produtivas da sociedade."
+    "text": "Excesso de regulação: Regulamentações governamentais em excesso sufocam a inovação e impedem o crescimento econômico."
   },
   {
     "id": 19,
     "axis": "C",
-    "text": "Desigualdade natural: É natural e justo que exista desigualdade de renda em uma sociedade, pois cada pessoa colhe os resultados do próprio esforço, talento e escolhas."
+    "text": "Prosperidade não é soma zero: O sucesso financeiro de algumas pessoas não impede o sucesso das outras — empreendedores criam oportunidades para muitos."
   },
   {
     "id": 20,
     "axis": "C",
-    "text": "Benefícios da competição: A livre concorrência entre empresas é a melhor forma de melhorar a qualidade dos produtos e serviços, reduzir preços e estimular a inovação — melhor do que regulação governamental."
+    "text": "Mercado acima do governo: A estabilidade econômica depende mais do bom funcionamento dos mercados do que das decisões de políticos."
   },
   {
     "id": 21,
-    "axis": "C",
-    "text": "Privatização gera eficiência: Privatizar empresas estatais (correios, energia, bancos públicos) geralmente as torna mais eficientes, com melhor atendimento e menor custo para o consumidor."
+    "axis": "R",
+    "text": "Necessidade de espiritualidade: A vida humana tem pouco sentido profundo sem alguma forma de crença espiritual ou transcendente."
   },
   {
     "id": 22,
-    "axis": "C",
-    "text": "Responsabilidade financeira pessoal: As pessoas são, em grande parte, responsáveis por sua própria situação financeira — suas escolhas de carreira, gastos e investimentos determinam se serão ricas ou pobres."
+    "axis": "R",
+    "text": "Legal não é igual a moral: Existem comportamentos legalmente permitidos que ainda assim são moralmente errados segundo princípios superiores."
   },
   {
     "id": 23,
-    "axis": "C",
-    "text": "Mérito econômico: A capacidade de gerar riqueza e ter sucesso financeiro deve ser um fator importante de prestígio e respeito social — pessoas bem-sucedidas economicamente merecem reconhecimento."
+    "axis": "R",
+    "text": "Sabedoria das tradições: Tradições religiosas antigas ainda contêm sabedoria valiosa para resolver problemas dos tempos atuais."
   },
   {
     "id": 24,
-    "axis": "C",
-    "text": "Liberdade de investimento: As pessoas deveriam ter ampla liberdade para investir seu dinheiro onde quiserem — inclusive em setores de alto risco —, sem o governo tentar protegê-las de si mesmas."
+    "axis": "R",
+    "text": "Práticas espirituais fortalecem: Práticas como orações e meditações fortalecem o caráter e ajudam a tomar melhores decisões na vida."
   },
   {
     "id": 25,
-    "axis": "C",
-    "text": "Empreender é direito fundamental: A liberdade para empreender (abrir um negócio, contratar pessoas, buscar lucro) é um direito fundamental tão importante quanto a liberdade de expressão ou de religião."
+    "axis": "R",
+    "text": "Relativismo moral enfraquece: A sociedade se enfraquece quando relativiza demais os valores morais, tratando tudo como opinião pessoal."
   },
   {
     "id": 26,
-    "axis": "C",
-    "text": "Excesso de regulação: Regulamentações governamentais em excesso (leis trabalhistas, ambientais, sanitárias muito rígidas) sufocam a inovação e a criatividade das empresas, impedindo o crescimento."
+    "axis": "R",
+    "text": "Fé fortalece a família: Famílias que praticam juntas sua fé tendem a ser mais unidas e resilientes em momentos de crise."
   },
   {
     "id": 27,
-    "axis": "C",
-    "text": "Bilionários na sociedade: É saudável e positivo que existam indivíduos extremamente ricos (bilionários) em uma sociedade — eles geralmente são inovadores que criaram valor para muitas pessoas."
+    "axis": "R",
+    "text": "Vazio existencial: Muitas pessoas sentem um vazio mesmo tendo dinheiro e sucesso — falta-lhes propósito espiritual."
   },
   {
     "id": 28,
-    "axis": "C",
-    "text": "Falência natural: Empresas que não conseguem se adaptar ao mercado ou satisfazer seus clientes devem ser deixadas para falir naturalmente — o governo não deveria socorrê-las com dinheiro público."
+    "axis": "R",
+    "text": "Fé em tempos de crise: Comunidades de fé oferecem sentido e esperança em crises que política e economia não conseguem resolver sozinhas."
   },
   {
     "id": 29,
-    "axis": "C",
-    "text": "Prosperidade não é soma zero: O sucesso financeiro de algumas pessoas não impede o sucesso das outras — pelo contrário, empreendedores bem-sucedidos criam empregos e oportunidades para muitos."
+    "axis": "R",
+    "text": "Experiências espirituais reais: Experiências espirituais profundas são difíceis de explicar racionalmente, mas são absolutamente reais para quem as vive."
   },
   {
     "id": 30,
-    "axis": "C",
-    "text": "Mercado acima do governo: A estabilidade econômica de um país depende mais do bom funcionamento dos mercados (empresas, bancos, investidores) do que das decisões de políticos e governantes."
-  },
-  {
-    "id": 31,
     "axis": "R",
-    "text": "Necessidade de espiritualidade: A vida humana tem pouco sentido profundo ou propósito último sem alguma forma de crença espiritual, religiosa ou transcendente — algo além do material."
-  },
-  {
-    "id": 32,
-    "axis": "R",
-    "text": "Legal não é igual a moral: Existem comportamentos que podem ser legalmente permitidos, mas que ainda assim são moralmente errados de acordo com princípios espirituais ou religiosos superiores."
-  },
-  {
-    "id": 33,
-    "axis": "R",
-    "text": "Sabedoria das tradições antigas: Tradições religiosas antigas (escrituras, rituais, ensinamentos dos antepassados) ainda contêm sabedoria valiosa e aplicável para resolver problemas dos tempos atuais."
-  },
-  {
-    "id": 34,
-    "axis": "R",
-    "text": "Comunidade de fé como família: A comunidade religiosa (igreja, templo, congregação) funciona como uma família estendida que deve apoiar seus membros em dificuldades, mas também corrigi-los quando erram."
-  },
-  {
-    "id": 35,
-    "axis": "R",
-    "text": "Práticas espirituais fortalecem: Práticas espirituais regulares — como orações, meditações, jejuns, rituais religiosos — fortalecem o caráter, dão clareza mental e ajudam a tomar melhores decisões na vida."
-  },
-  {
-    "id": 36,
-    "axis": "R",
-    "text": "Relativismo moral enfraquece: A sociedade moderna se enfraquece quando relativiza demais os valores morais fundamentais, tratando tudo como 'opinião pessoal' e recusando-se a defender o certo e o errado."
-  },
-  {
-    "id": 37,
-    "axis": "R",
-    "text": "Fé fortalece a família: Famílias que praticam juntas sua fé (orando, frequentando cultos, seguindo tradições religiosas) tendem a ser mais unidas, estáveis e resilientes em momentos de crise."
-  },
-  {
-    "id": 38,
-    "axis": "R",
-    "text": "Vazio existencial: No fundo, muitas pessoas sentem um vazio ou falta de algo maior em suas vidas, mesmo quando já têm dinheiro, sucesso e status social — falta-lhes propósito espiritual."
-  },
-  {
-    "id": 39,
-    "axis": "R",
-    "text": "Fé nas decisões públicas: Valores espirituais e religiosos devem ter peso real nas decisões políticas e sociais importantes — não apenas ser tratados como assunto privado sem relevância pública."
-  },
-  {
-    "id": 40,
-    "axis": "R",
-    "text": "Caridade como sinal de fé: A prática sincera da caridade (ajudar os pobres, cuidar dos necessitados, doar tempo e recursos) é um dos maiores sinais visíveis de uma fé religiosa autêntica."
-  },
-  {
-    "id": 41,
-    "axis": "R",
-    "text": "Responsabilidade eterna: Pessoas que acreditam em vida após a morte, julgamento divino ou karma tendem a agir com mais responsabilidade moral, sabendo que suas ações têm consequências eternas."
-  },
-  {
-    "id": 42,
-    "axis": "R",
-    "text": "Fé em tempos de crise: Comunidades de fé podem oferecer sentido, esperança e consolo em meio a crises (mortes, doenças, desastres) que a política, a economia e a ciência não conseguem resolver sozinhas."
-  },
-  {
-    "id": 43,
-    "axis": "R",
-    "text": "Experiências espirituais reais: Certas experiências espirituais profundas (sentir a presença de Deus, ter orações respondidas, conversões) são difíceis de explicar racionalmente, mas são absolutamente reais para quem as vive."
-  },
-  {
-    "id": 44,
-    "axis": "R",
-    "text": "Liberdade de expressão religiosa: Pessoas com crenças religiosas profundas devem poder expressá-las publicamente e defendê-las, mesmo quando isso vai contra a opinião dominante ou o 'politicamente correto'."
-  },
-  {
-    "id": 45,
-    "axis": "R",
-    "text": "Comunidade de fé resistente: Uma comunidade que coloca a fé, a solidariedade e os valores espirituais no centro de sua vida coletiva tende a resistir melhor às crises, tentações e problemas do mundo moderno."
+    "text": "Comunidade de fé resistente: Comunidades que colocam a fé e valores espirituais no centro resistem melhor às crises do mundo moderno."
   }
 ]

@@ -3,53 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>DTE · Admin · Painel</title>
+  <title>DTE · Painel Admin</title>
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
   <main class="container">
-    <h1>Painel do Administrador</h1>
+    <h1>DTE</h1>
+    <p class="brand-subtitle">Painel do Administrador</p>
 
     <div class="card">
       <p class="scale-legend" id="welcome">Carregando...</p>
-      <p class="scale-legend">
-        <a href="#" id="logout" style="color:#a5b4fc;text-decoration:none;">Sair</a>
-      </p>
+      <div class="auth-links">
+        <a href="#" id="logout">Sair da conta</a>
+      </div>
     </div>
 
     <div class="card">
-      <h2>Menu</h2>
+      <h2>Menu principal</h2>
 
-      <div class="question-card" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-        <div>
-          <div style="font-weight:600;">Acessar questionário</div>
-          <div class="scale-legend">Responder e ver resultado como qualquer usuário.</div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <div class="menu-item-title">📝 Acessar questionário</div>
+          <div class="menu-item-desc">Responder e ver resultado como qualquer usuário.</div>
         </div>
-        <a class="button" href="/quiz.html" style="text-decoration:none;">Abrir</a>
+        <a class="button" href="/quiz.html">Abrir</a>
       </div>
 
-      <div class="question-card" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-        <div>
-          <div style="font-weight:600;">Gerar convite (QR Code)</div>
-          <div class="scale-legend">Gerar QR Code público para convidar respondentes.</div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <div class="menu-item-title">📱 Gerar QR Code</div>
+          <div class="menu-item-desc">Criar convites para compartilhar com outras pessoas.</div>
         </div>
-        <a class="button" href="/invites.html" style="text-decoration:none;">Abrir</a>
+        <a class="button" href="/invites.html">Abrir</a>
       </div>
 
-      <div class="question-card" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-        <div>
-          <div style="font-weight:600;">Resultado geral (agregado)</div>
-          <div class="scale-legend">Diagrama com todos os respondentes + ponto médio.</div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <div class="menu-item-title">📊 Resultado agregado</div>
+          <div class="menu-item-desc">Ver diagrama com todos os respondentes e ponto médio.</div>
         </div>
-        <a class="button" href="/aggregate.html" style="text-decoration:none;">Abrir</a>
+        <a class="button" href="/aggregate.html">Abrir</a>
       </div>
 
-      <div class="question-card" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-        <div>
-          <div style="font-weight:600;">Resultado individual (busca)</div>
-          <div class="scale-legend">Buscar por nome/e-mail (parcial) e ver resultado do usuário.</div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <div class="menu-item-title">🔍 Buscar usuários</div>
+          <div class="menu-item-desc">Pesquisar por nome/e-mail e ver resultados individuais.</div>
         </div>
-        <a class="button" href="/admin-individual.html" style="text-decoration:none;">Abrir</a>
+        <a class="button" href="/admin-individual.html">Abrir</a>
       </div>
     </div>
   </main>

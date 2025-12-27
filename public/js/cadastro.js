@@ -1,4 +1,4 @@
-import { apiFetch, setToken, getToken } from "./auth.js";
+import { apiFetch, getToken } from "./auth.js";
 
 const INVITE_KEY = "dte_invite_code";
 
@@ -6,16 +6,7 @@ function setMsg(id, text, isError = false) {
   const el = document.getElementById(id);
   if (el) {
     el.textContent = text || "";
-    el.style.color = isError ? "#ef4444" : "#22c55e";
-  }
-}
-
-async function goNext() {
-  const me = await apiFetch("/api/me");
-  if (me.role === "admin") {
-    window.location.href = "/admin-dashboard.html";
-  } else {
-    window.location.href = "/quiz.html";
+    el.className = isError ? "scale-legend msg-error" : "scale-legend msg-success";
   }
 }
 
@@ -45,8 +36,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Se já tem token válido, redireciona
   if (getToken()) {
     try {
-      await apiFetch("/api/me");
-      return goNext();
+      const me = await apiFetch("/api/me");
+      if (me.role === "admin") {
+        window.location.href = "/admin-dashboard.html";
+      } else {
+        window.location.href = "/quiz.html";
+      }
+      return;
     } catch {
       // Token inválido, continua na página
     }
@@ -60,7 +56,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       
       const submitBtn = registerForm.querySelector('button[type="submit"]');
       submitBtn.disabled = true;
-      submitBtn.textContent = "Criando conta...";
+      submitBtn.innerHTML = '<span class="spinner"></span>Criando...';
       
       try {
         const name = document.getElementById("reg-name").value.trim();
@@ -73,24 +69,15 @@ document.addEventListener("DOMContentLoaded", async () => {
           body: JSON.stringify({ name, email, password, inviteCode })
         });
         
-        setMsg("reg-msg", "✓ Conta criada com sucesso! Fazendo login...");
-        
-        // Auto-login após cadastro
-        const loginData = await apiFetch("/api/login", {
-          method: "POST",
-          body: JSON.stringify({ email, password })
-        });
-        
-        setToken(loginData.token);
-        
         // Limpa o código de convite após uso
         localStorage.removeItem(INVITE_KEY);
         
-        if (loginData.role === "admin") {
-          window.location.href = "/admin-dashboard.html";
-        } else {
-          window.location.href = "/quiz.html";
-        }
+        // Mostra mensagem de sucesso e redireciona para login
+        setMsg("reg-msg", "✓ Conta criada com sucesso! Redirecionando para login...", false);
+        
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 2000);
         
       } catch (err) {
         setMsg("reg-msg", err.message, true);

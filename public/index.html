@@ -8,38 +8,38 @@
 </head>
 <body>
   <main class="container">
-    <h1>Diagrama de Tendência Esferal (DTE)</h1>
+    <h1>DTE</h1>
+    <p class="brand-subtitle">Diagrama de Tendência Esferal</p>
 
     <div class="card">
-      <p>
-        Faça login para acessar o questionário.
-      </p>
-      <p class="scale-legend" id="invite-detected" style="display:none;color:#22c55e;">
+      <h2>Acessar conta</h2>
+      <p class="scale-legend" id="invite-detected" style="display:none;color:var(--accent-success);">
         ✓ Convite detectado! Faça login ou crie uma conta para continuar.
       </p>
-    </div>
-
-    <div class="card">
-      <h2>Entrar</h2>
+      
       <form id="login-form">
         <div class="question-card">
           <p class="question-text">E-mail</p>
-          <input id="login-email" type="email" required autocomplete="email"
-            style="width:100%;padding:10px;border-radius:10px;border:1px solid #1f2937;background:#020617;color:#e5e7eb;"/>
+          <input id="login-email" type="email" required autocomplete="email" placeholder="seu@email.com"/>
         </div>
         <div class="question-card">
           <p class="question-text">Senha</p>
-          <input id="login-password" type="password" required minlength="6" autocomplete="current-password"
-            style="width:100%;padding:10px;border-radius:10px;border:1px solid #1f2937;background:#020617;color:#e5e7eb;"/>
+          <input id="login-password" type="password" required minlength="6" autocomplete="current-password" placeholder="••••••••"/>
         </div>
         <button type="submit">Entrar</button>
       </form>
-      <p id="login-msg" class="scale-legend"></p>
+      <p id="login-msg" class="scale-legend" style="margin-top:12px;"></p>
+      
+      <div class="auth-links">
+        <a href="/esqueci-senha.html" id="link-forgot">Esqueci minha senha</a>
+      </div>
     </div>
 
+    <div class="auth-divider"><span>ou</span></div>
+
     <div class="card" style="text-align:center;">
-      <p class="scale-legend">Ainda não tem conta?</p>
-      <a href="/cadastro.html" class="button" id="link-cadastro" style="text-decoration:none;">Criar conta</a>
+      <p style="margin-bottom:16px;color:var(--text-secondary);">Ainda não tem conta?</p>
+      <a href="/cadastro.html" class="button alt" id="link-cadastro">Criar conta</a>
     </div>
   </main>
 

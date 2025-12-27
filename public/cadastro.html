@@ -8,43 +8,38 @@
 </head>
 <body>
   <main class="container">
-    <h1>Diagrama de Tendência Esferal (DTE)</h1>
-
-    <div class="card">
-      <p>
-        Crie sua conta para responder o questionário.
-      </p>
-      <p class="scale-legend" id="invite-detected" style="display:none;color:#22c55e;">
-        ✓ Convite detectado! Crie sua conta para continuar.
-      </p>
-    </div>
+    <h1>DTE</h1>
+    <p class="brand-subtitle">Diagrama de Tendência Esferal</p>
 
     <div class="card">
       <h2>Criar conta</h2>
+      <p class="scale-legend" id="invite-detected" style="display:none;color:var(--accent-success);">
+        ✓ Convite detectado! Complete o cadastro para continuar.
+      </p>
+      
       <form id="register-form">
         <div class="question-card">
-          <p class="question-text">Nome</p>
-          <input id="reg-name" type="text" required minlength="2" autocomplete="name"
-            style="width:100%;padding:10px;border-radius:10px;border:1px solid #1f2937;background:#020617;color:#e5e7eb;"/>
+          <p class="question-text">Nome completo</p>
+          <input id="reg-name" type="text" required minlength="2" autocomplete="name" placeholder="Seu nome"/>
         </div>
         <div class="question-card">
           <p class="question-text">E-mail</p>
-          <input id="reg-email" type="email" required autocomplete="email"
-            style="width:100%;padding:10px;border-radius:10px;border:1px solid #1f2937;background:#020617;color:#e5e7eb;"/>
+          <input id="reg-email" type="email" required autocomplete="email" placeholder="seu@email.com"/>
         </div>
         <div class="question-card">
           <p class="question-text">Senha (mínimo 6 caracteres)</p>
-          <input id="reg-password" type="password" required minlength="6" autocomplete="new-password"
-            style="width:100%;padding:10px;border-radius:10px;border:1px solid #1f2937;background:#020617;color:#e5e7eb;"/>
+          <input id="reg-password" type="password" required minlength="6" autocomplete="new-password" placeholder="••••••••"/>
         </div>
         <button type="submit">Criar conta</button>
       </form>
-      <p id="reg-msg" class="scale-legend"></p>
+      <p id="reg-msg" class="scale-legend" style="margin-top:12px;"></p>
     </div>
 
+    <div class="auth-divider"><span>ou</span></div>
+
     <div class="card" style="text-align:center;">
-      <p class="scale-legend">Já tem conta?</p>
-      <a href="/" class="button" id="link-login" style="text-decoration:none;background:linear-gradient(135deg, #6366f1, #8b5cf6);">Fazer login</a>
+      <p style="margin-bottom:16px;color:var(--text-secondary);">Já tem uma conta?</p>
+      <a href="/" class="button secondary" id="link-login">Fazer login</a>
     </div>
   </main>
 

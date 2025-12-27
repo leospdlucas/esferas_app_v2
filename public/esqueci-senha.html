@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>DTE · Recuperar Senha</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>DTE</h1>
+    <p class="brand-subtitle">Recuperação de Senha</p>
+
+    <!-- Step 1: Email -->
+    <div class="card" id="step-email">
+      <h2>Esqueceu sua senha?</h2>
+      <p class="scale-legend">Informe seu e-mail e enviaremos um código de 6 dígitos para redefinir sua senha.</p>
+      
+      <form id="email-form">
+        <div class="question-card">
+          <p class="question-text">E-mail cadastrado</p>
+          <input id="reset-email" type="email" required autocomplete="email" placeholder="seu@email.com"/>
+        </div>
+        <button type="submit">Enviar código</button>
+      </form>
+      <p id="email-msg" class="scale-legend" style="margin-top:12px;"></p>
+    </div>
+
+    <!-- Step 2: Code verification -->
+    <div class="card" id="step-code" style="display:none;">
+      <h2>Verificar código</h2>
+      <p class="scale-legend">Digite o código de 6 dígitos enviado para <strong id="sent-email"></strong></p>
+      
+      <form id="code-form">
+        <div class="question-card" style="text-align:center;">
+          <p class="question-text">Código de verificação</p>
+          <div class="code-input">
+            <input type="text" maxlength="1" class="code-digit" data-index="0" inputmode="numeric" pattern="[0-9]"/>
+            <input type="text" maxlength="1" class="code-digit" data-index="1" inputmode="numeric" pattern="[0-9]"/>
+            <input type="text" maxlength="1" class="code-digit" data-index="2" inputmode="numeric" pattern="[0-9]"/>
+            <input type="text" maxlength="1" class="code-digit" data-index="3" inputmode="numeric" pattern="[0-9]"/>
+            <input type="text" maxlength="1" class="code-digit" data-index="4" inputmode="numeric" pattern="[0-9]"/>
+            <input type="text" maxlength="1" class="code-digit" data-index="5" inputmode="numeric" pattern="[0-9]"/>
+          </div>
+        </div>
+        <button type="submit">Verificar código</button>
+      </form>
+      <p id="code-msg" class="scale-legend" style="margin-top:12px;"></p>
+      
+      <div class="auth-links">
+        <a href="#" id="resend-code">Reenviar código</a>
+      </div>
+    </div>
+
+    <!-- Step 3: New password -->
+    <div class="card" id="step-password" style="display:none;">
+      <h2>Nova senha</h2>
+      <p class="scale-legend">Crie uma nova senha para sua conta.</p>
+      
+      <form id="password-form">
+        <div class="question-card">
+          <p class="question-text">Nova senha (mínimo 6 caracteres)</p>
+          <input id="new-password" type="password" required minlength="6" autocomplete="new-password" placeholder="••••••••"/>
+        </div>
+        <div class="question-card">
+          <p class="question-text">Confirmar nova senha</p>
+          <input id="confirm-password" type="password" required minlength="6" autocomplete="new-password" placeholder="••••••••"/>
+        </div>
+        <button type="submit">Alterar senha</button>
+      </form>
+      <p id="password-msg" class="scale-legend" style="margin-top:12px;"></p>
+    </div>
+
+    <!-- Success -->
+    <div class="card" id="step-success" style="display:none;text-align:center;">
+      <h2>✓ Senha alterada!</h2>
+      <p style="margin-bottom:24px;color:var(--text-secondary);">Sua senha foi alterada com sucesso. Agora você pode fazer login.</p>
+      <a href="/" class="button">Ir para login</a>
+    </div>
+
+    <div class="auth-divider"><span>ou</span></div>
+
+    <div class="card" style="text-align:center;">
+      <p style="margin-bottom:16px;color:var(--text-secondary);">Lembrou a senha?</p>
+      <a href="/" class="button secondary">Voltar ao login</a>
+    </div>
+  </main>
+
+  <script type="module" src="/js/forgot-password.js"></script>
+</body>
+</html>
