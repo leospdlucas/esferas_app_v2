@@ -3,53 +3,165 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>DTE · Admin · Convites (QR Code)</title>
+  <title>DTE · Gerar Convites</title>
   <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    .invite-result {
+      margin-top: 20px;
+      padding: 20px;
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid var(--accent-primary);
+      border-radius: 12px;
+    }
+    .invite-link-box {
+      display: flex;
+      gap: 8px;
+      margin: 12px 0;
+    }
+    .invite-link-box input {
+      flex: 1;
+      font-size: 0.85rem;
+    }
+    .invite-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .invite-actions button {
+      flex: 1;
+      min-width: 140px;
+    }
+    .qr-container {
+      margin-top: 16px;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .qr-container img {
+      max-width: 200px;
+      width: 100%;
+    }
+    .invite-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+      background: rgba(10, 10, 30, 0.5);
+      border-radius: 10px;
+      margin-bottom: 10px;
+      border: 1px solid var(--border-color);
+    }
+    .invite-item:hover {
+      border-color: var(--border-glow);
+    }
+    .invite-info {
+      flex: 1;
+    }
+    .invite-code {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.85rem;
+      color: var(--accent-tertiary);
+    }
+    .invite-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .invite-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .invite-buttons button {
+      padding: 8px 12px;
+      font-size: 0.8rem;
+    }
+    .copied-toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent-success);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 1000;
+    }
+    .copied-toast.show {
+      opacity: 1;
+    }
+  </style>
 </head>
 <body>
   <main class="container">
-    <h1>Admin · Convites (QR Code)</h1>
+    <h1>DTE</h1>
+    <p class="brand-subtitle">Gerar Convites</p>
 
     <div class="card">
       <p class="scale-legend">
-        <a href="/admin-dashboard.html" style="color:#a5b4fc;text-decoration:none;">Voltar ao painel</a> ·
-        <a href="#" id="logout" style="color:#a5b4fc;text-decoration:none;">Sair</a>
+        <a href="/admin-dashboard.html">← Voltar ao painel</a>
+        <span style="margin:0 8px;">·</span>
+        <a href="#" id="logout">Sair</a>
       </p>
       <p class="scale-legend" id="status">Carregando...</p>
     </div>
 
     <div class="card">
-      <h2>Gerar convite</h2>
-      <p class="scale-legend">Defina expiração e limite de usos (0 = ilimitado). O QR Code é público.</p>
+      <h2>Novo convite</h2>
+      <p class="scale-legend">Crie um link ou QR Code para convidar pessoas a responder o questionário.</p>
 
       <div class="question-card">
-        <p class="question-text">Expira em (dias, opcional)</p>
-        <input id="inv-expires" type="number" min="1" step="1" placeholder="Ex: 7"
-          style="width:100%;padding:10px;border-radius:10px;border:1px solid #1f2937;background:#020617;color:#e5e7eb;"/>
+        <p class="question-text">Expira em quantos dias? (deixe vazio para nunca expirar)</p>
+        <input id="inv-expires" type="number" min="1" step="1" placeholder="Ex: 7"/>
       </div>
 
       <div class="question-card">
-        <p class="question-text">Máximo de usos (0 = ilimitado)</p>
-        <input id="inv-max" type="number" min="0" step="1" value="0"
-          style="width:100%;padding:10px;border-radius:10px;border:1px solid #1f2937;background:#020617;color:#e5e7eb;"/>
+        <p class="question-text">Limite de usos (0 = ilimitado)</p>
+        <input id="inv-max" type="number" min="0" step="1" value="0" placeholder="0"/>
       </div>
 
-      <button type="button" id="inv-generate">Gerar QR Code</button>
-      <p class="scale-legend" id="inv-msg"></p>
+      <button type="button" id="inv-generate">Gerar Convite</button>
+      <p class="scale-legend msg-error" id="inv-msg"></p>
 
-      <div id="inv-qr-wrap" style="display:none; text-align:center; padding:12px; border:1px solid #1f2937; border-radius:12px; background:#020617;">
-        <img id="inv-qr" alt="QR Code do convite" style="max-width:260px;width:100%;height:auto;"/>
-        <p class="scale-legend" style="margin-top:10px;">Aponte a câmera para abrir o convite.</p>
-        <p class="scale-legend" id="inv-link-text" style="word-break:break-all;"></p>
+      <!-- Resultado do convite gerado -->
+      <div id="invite-result" class="invite-result" style="display:none;">
+        <h3 style="margin-bottom:12px;color:var(--accent-success);">✓ Convite criado!</h3>
+        
+        <p class="question-text" style="margin-bottom:8px;">Link do convite:</p>
+        <div class="invite-link-box">
+          <input type="text" id="invite-link" readonly />
+          <button type="button" id="copy-link" style="margin:0;padding:12px 16px;">Copiar</button>
+        </div>
+
+        <div class="invite-actions">
+          <button type="button" id="show-qr" class="secondary">📱 Ver QR Code</button>
+          <button type="button" id="download-qr" class="secondary">⬇️ Baixar QR Code</button>
+          <button type="button" id="share-link" class="secondary">📤 Compartilhar</button>
+        </div>
+
+        <div id="qr-display" class="qr-container" style="display:none;">
+          <img id="qr-image" alt="QR Code do convite" />
+          <p style="color:#333;margin-top:12px;font-size:0.85rem;">Aponte a câmera do celular</p>
+        </div>
       </div>
     </div>
 
     <div class="card">
-      <h2>Convites recentes</h2>
-      <div id="invites"></div>
+      <h2>Convites anteriores</h2>
+      <div id="invites-list"></div>
     </div>
   </main>
 
+  <!-- Toast de copiado -->
+  <div id="copied-toast" class="copied-toast">Link copiado!</div>
+
   <script type="module" src="/js/invites.js"></script>
+  <script src="/js/keep-alive.js"></script>
 </body>
 </html>

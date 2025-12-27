@@ -1,15 +1,53 @@
 import { apiFetch, requireAuth, clearToken } from "./auth.js";
 
+let currentInviteCode = null;
+
 function fmtDate(sqliteDate) {
-  if (!sqliteDate) return "—";
-  // sqlite "YYYY-MM-DD HH:MM:SS"
+  if (!sqliteDate) return "Nunca";
   return new Date(sqliteDate.replace(" ", "T") + "Z").toLocaleString("pt-BR");
 }
 
-function el(html) {
-  const div = document.createElement("div");
-  div.innerHTML = html.trim();
-  return div.firstChild;
+function showToast(message = "Link copiado!") {
+  const toast = document.getElementById("copied-toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+  setTimeout(() => toast.classList.remove("show"), 2000);
+}
+
+async function copyToClipboard(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    showToast("Link copiado!");
+    return true;
+  } catch {
+    // Fallback para navegadores mais antigos
+    const input = document.createElement("input");
+    input.value = text;
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand("copy");
+    document.body.removeChild(input);
+    showToast("Link copiado!");
+    return true;
+  }
+}
+
+async function shareLink(url, title = "Convite DTE") {
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: title,
+        text: "Você foi convidado para responder o Diagrama de Tendência Esferal!",
+        url: url
+      });
+    } catch (err) {
+      // Usuário cancelou ou erro - copia para clipboard como fallback
+      await copyToClipboard(url);
+    }
+  } else {
+    // Navegador não suporta share - copia para clipboard
+    await copyToClipboard(url);
+  }
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -21,55 +59,79 @@ document.addEventListener("DOMContentLoaded", async () => {
     window.location.href = "/";
   });
 
-  document.getElementById("status").textContent = "Pronto.";
+  document.getElementById("status").textContent = "Pronto para gerar convites.";
 
   const msg = document.getElementById("inv-msg");
-  const qrWrap = document.getElementById("inv-qr-wrap");
-  const qrImg = document.getElementById("inv-qr");
-  const linkText = document.getElementById("inv-link-text");
-  const list = document.getElementById("invites");
+  const resultDiv = document.getElementById("invite-result");
+  const linkInput = document.getElementById("invite-link");
+  const qrDisplay = document.getElementById("qr-display");
+  const qrImage = document.getElementById("qr-image");
+  const invitesList = document.getElementById("invites-list");
 
-  async function refresh() {
-    const invites = await apiFetch("/api/admin/invites");
-    list.innerHTML = "";
-    if (!invites || invites.length === 0) {
-      list.textContent = "Nenhum convite ainda.";
-      return;
-    }
-    for (const inv of invites) {
-      const exp = inv.expires_at ? fmtDate(inv.expires_at) : "—";
-      const max = inv.max_uses && inv.max_uses > 0 ? inv.max_uses : "ilimitado";
-      const row = el(`
-        <div class="question-card" style="display:flex;justify-content:space-between;gap:12px;align-items:center;">
-          <div>
-            <div style="font-weight:600;">Código: ${inv.code}</div>
-            <div class="scale-legend">Usos: ${inv.uses} / ${max} · Expira: ${exp}</div>
-          </div>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;">
-            <button type="button" data-action="copy">Copiar link</button>
-            <button type="button" data-action="qr">Ver QR</button>
-          </div>
-        </div>
-      `);
+  // Carregar lista de convites
+  async function loadInvites() {
+    try {
+      const invites = await apiFetch("/api/admin/invites");
+      invitesList.innerHTML = "";
+      
+      if (!invites || invites.length === 0) {
+        invitesList.innerHTML = '<p class="scale-legend">Nenhum convite criado ainda.</p>';
+        return;
+      }
 
-      row.querySelectorAll("button").forEach((b) => b.addEventListener("click", async () => {
-        const action = b.getAttribute("data-action");
+      for (const inv of invites) {
         const url = `${window.location.origin}/invite.html?code=${inv.code}`;
-        if (action === "copy") {
-          await navigator.clipboard.writeText(url);
-          msg.textContent = "Link copiado.";
-        } else if (action === "qr") {
-          window.open(`/api/invites/${inv.code}/qr.png`, "_blank");
-        }
-      }));
+        const maxUses = inv.max_uses > 0 ? inv.max_uses : "∞";
+        const status = inv.max_uses > 0 && inv.uses >= inv.max_uses ? 
+          '<span class="badge badge-danger">Esgotado</span>' : 
+          '<span class="badge badge-success">Ativo</span>';
 
-      list.appendChild(row);
+        const item = document.createElement("div");
+        item.className = "invite-item";
+        item.innerHTML = `
+          <div class="invite-info">
+            <div class="invite-code">${inv.code.substring(0, 8)}...</div>
+            <div class="invite-meta">
+              Usos: ${inv.uses}/${maxUses} · Expira: ${fmtDate(inv.expires_at)} ${status}
+            </div>
+          </div>
+          <div class="invite-buttons">
+            <button type="button" data-action="copy" title="Copiar link">📋</button>
+            <button type="button" data-action="qr" title="Ver QR Code">📱</button>
+            <button type="button" data-action="share" title="Compartilhar">📤</button>
+          </div>
+        `;
+
+        item.querySelectorAll("button").forEach(btn => {
+          btn.addEventListener("click", async () => {
+            const action = btn.dataset.action;
+            if (action === "copy") {
+              await copyToClipboard(url);
+            } else if (action === "qr") {
+              window.open(`/api/invites/${inv.code}/qr.png`, "_blank");
+            } else if (action === "share") {
+              await shareLink(url);
+            }
+          });
+        });
+
+        invitesList.appendChild(item);
+      }
+    } catch (err) {
+      invitesList.innerHTML = `<p class="scale-legend msg-error">Erro ao carregar: ${err.message}</p>`;
     }
   }
 
+  // Gerar novo convite
   document.getElementById("inv-generate").addEventListener("click", async () => {
     msg.textContent = "";
-    qrWrap.style.display = "none";
+    resultDiv.style.display = "none";
+    qrDisplay.style.display = "none";
+
+    const btn = document.getElementById("inv-generate");
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span>Gerando...';
+
     try {
       const expiresDaysRaw = document.getElementById("inv-expires").value;
       const maxUsesRaw = document.getElementById("inv-max").value;
@@ -79,20 +141,58 @@ document.addEventListener("DOMContentLoaded", async () => {
         maxUses: maxUsesRaw ? Number(maxUsesRaw) : 0
       };
 
-      const data = await apiFetch("/api/admin/invites", { method: "POST", body: JSON.stringify(payload) });
+      const data = await apiFetch("/api/admin/invites", { 
+        method: "POST", 
+        body: JSON.stringify(payload) 
+      });
+
       const url = data.absoluteUrl || `${window.location.origin}${data.url}`;
+      currentInviteCode = data.code;
 
-      qrImg.src = data.qrPngUrl;
-      linkText.textContent = url;
-      qrWrap.style.display = "block";
+      // Mostrar resultado
+      linkInput.value = url;
+      qrImage.src = `/api/invites/${data.code}/qr.png`;
+      resultDiv.style.display = "block";
 
-      await navigator.clipboard.writeText(url);
-      msg.textContent = "Convite criado. QR Code exibido e link copiado.";
-      await refresh();
-    } catch (e) {
-      msg.textContent = e.message;
+      // Copiar automaticamente
+      await copyToClipboard(url);
+
+      // Recarregar lista
+      await loadInvites();
+
+    } catch (err) {
+      msg.textContent = err.message;
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Gerar Convite";
     }
   });
 
-  await refresh();
+  // Copiar link
+  document.getElementById("copy-link").addEventListener("click", async () => {
+    await copyToClipboard(linkInput.value);
+  });
+
+  // Mostrar QR Code
+  document.getElementById("show-qr").addEventListener("click", () => {
+    qrDisplay.style.display = qrDisplay.style.display === "none" ? "block" : "none";
+  });
+
+  // Baixar QR Code
+  document.getElementById("download-qr").addEventListener("click", () => {
+    if (currentInviteCode) {
+      const link = document.createElement("a");
+      link.href = `/api/invites/${currentInviteCode}/qr.png`;
+      link.download = `convite-dte-${currentInviteCode.substring(0, 8)}.png`;
+      link.click();
+    }
+  });
+
+  // Compartilhar
+  document.getElementById("share-link").addEventListener("click", async () => {
+    await shareLink(linkInput.value);
+  });
+
+  // Carregar convites iniciais
+  await loadInvites();
 });

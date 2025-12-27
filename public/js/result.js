@@ -3,25 +3,34 @@ import { interpretAxis, computeTriangleCoords, plotTriangle } from "./scoring.js
 
 function setText(id, text) {
   const el = document.getElementById(id);
-  el.textContent = text ?? "";
+  if (el) el.textContent = text ?? "";
 }
 
-function dominantLabel(w_M, w_C, w_R) {
-  const weights = {
-    "Estirpe Pátria (Segurança)": w_M,
-    "Ventos Áureo (Prosperidade)": w_C,
-    "Sociedade da Fé (Sentido)": w_R
-  };
-  let dominant = "";
-  let maxVal = -Infinity;
-  for (const [k, v] of Object.entries(weights)) {
-    if (v > maxVal) { maxVal = v; dominant = k; }
+function setBar(id, score) {
+  const el = document.getElementById(id);
+  if (el) {
+    // Convert score from -10/+10 to 0-100%
+    const percent = ((score + 10) / 20) * 100;
+    setTimeout(() => {
+      el.style.width = percent + '%';
+    }, 100);
   }
-  return `${dominant} (${(maxVal * 100).toFixed(1)}%)`;
+}
+
+function getDominantInfo(w_M, w_C, w_R) {
+  const spheres = [
+    { key: 'M', name: 'Segurança', subtitle: 'Estirpe Pátria', icon: '⚔️', weight: w_M, color: '#ef4444' },
+    { key: 'C', name: 'Prosperidade', subtitle: 'Ventos Áureo', icon: '💰', weight: w_C, color: '#eab308' },
+    { key: 'R', name: 'Sentido', subtitle: 'Sociedade da Fé', icon: '🙏', weight: w_R, color: '#8b5cf6' }
+  ];
+  
+  spheres.sort((a, b) => b.weight - a.weight);
+  return spheres[0];
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
   const me = await requireAuth();
+  
   document.getElementById("logout").addEventListener("click", (e) => {
     e.preventDefault();
     clearToken();
@@ -32,30 +41,71 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     const data = await apiFetch("/api/my-latest");
-    status.textContent = `Última resposta em ${new Date(data.created_at).toLocaleString("pt-BR")}.`;
+    const date = new Date(data.created_at).toLocaleString("pt-BR");
+    status.textContent = `Resultado de ${date}`;
 
-    setText("score-M", Number(data.S_M).toFixed(2));
-    setText("score-C", Number(data.S_C).toFixed(2));
-    setText("score-R", Number(data.S_R).toFixed(2));
+    const S_M = Number(data.S_M);
+    const S_C = Number(data.S_C);
+    const S_R = Number(data.S_R);
+    const w_M = Number(data.w_M);
+    const w_C = Number(data.w_C);
+    const w_R = Number(data.w_R);
 
-    setText("label-M", interpretAxis(Number(data.S_M)));
-    setText("label-C", interpretAxis(Number(data.S_C)));
-    setText("label-R", interpretAxis(Number(data.S_R)));
+    // Set scores
+    setText("score-M", S_M.toFixed(1));
+    setText("score-C", S_C.toFixed(1));
+    setText("score-R", S_R.toFixed(1));
 
-    setText("weight-M", (Number(data.w_M) * 100).toFixed(1) + "%");
-    setText("weight-C", (Number(data.w_C) * 100).toFixed(1) + "%");
-    setText("weight-R", (Number(data.w_R) * 100).toFixed(1) + "%");
+    // Set interpretations
+    setText("label-M", interpretAxis(S_M));
+    setText("label-C", interpretAxis(S_C));
+    setText("label-R", interpretAxis(S_R));
 
-    setText("dominant-esfera", dominantLabel(Number(data.w_M), Number(data.w_C), Number(data.w_R)));
+    // Set weights
+    setText("weight-M", (w_M * 100).toFixed(0) + "%");
+    setText("weight-C", (w_C * 100).toFixed(0) + "%");
+    setText("weight-R", (w_R * 100).toFixed(0) + "%");
 
+    // Animate bars
+    setBar("bar-M", S_M);
+    setBar("bar-C", S_C);
+    setBar("bar-R", S_R);
+
+    // Set dominant sphere
+    const dominant = getDominantInfo(w_M, w_C, w_R);
+    document.getElementById("dominant-icon").textContent = dominant.icon;
+    document.getElementById("dominant-name").innerHTML = `
+      <strong style="color:${dominant.color}">${dominant.name}</strong> · ${dominant.subtitle}
+      <br><span style="font-size:1.5rem;font-weight:700;color:${dominant.color}">${(dominant.weight * 100).toFixed(0)}%</span>
+    `;
+    document.getElementById("dominant-card").style.borderColor = dominant.color;
+    document.getElementById("dominant-card").style.background = `linear-gradient(135deg, ${dominant.color}22, ${dominant.color}11)`;
+
+    // Draw triangle
     const canvas = document.getElementById("triangle-canvas");
-    const point = computeTriangleCoords(Number(data.w_M), Number(data.w_C), Number(data.w_R));
-    plotTriangle(canvas, point, { label: "Você" });
+    const point = computeTriangleCoords(w_M, w_C, w_R);
+    plotTriangle(canvas, point, { 
+      label: "Você", 
+      weights: { w_M, w_C, w_R }
+    });
 
+    // Show admin link if admin
     if (me && me.role === "admin") {
       document.getElementById("admin-links").style.display = "block";
     }
+    
   } catch (err) {
-    status.textContent = "Você ainda não respondeu. Vá em “Responder novamente”.";
+    status.textContent = "Você ainda não respondeu ao questionário.";
+    document.getElementById("results").style.display = "none";
+    
+    // Show a helpful message
+    const card = document.createElement("div");
+    card.className = "card";
+    card.style.textAlign = "center";
+    card.innerHTML = `
+      <p style="margin-bottom:16px;color:var(--text-secondary);">Complete o questionário para ver seu resultado.</p>
+      <a href="/quiz.html" class="button">Responder agora</a>
+    `;
+    document.querySelector(".container").appendChild(card);
   }
 });

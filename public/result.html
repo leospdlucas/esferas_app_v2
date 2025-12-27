@@ -5,66 +5,198 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>DTE · Meu Resultado</title>
   <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    .triangle-container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    #triangle-canvas {
+      width: 100%;
+      height: 450px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+    }
+    .score-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      background: rgba(10, 10, 30, 0.5);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+    .score-card:hover {
+      border-color: var(--border-glow);
+    }
+    .score-icon {
+      font-size: 2rem;
+      width: 50px;
+      text-align: center;
+    }
+    .score-info {
+      flex: 1;
+    }
+    .score-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .score-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .score-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .score-bar-container {
+      width: 100%;
+      height: 8px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px;
+      margin-top: 8px;
+      overflow: hidden;
+    }
+    .score-bar {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 1s ease;
+    }
+    .score-m { color: #ef4444; }
+    .score-c { color: #eab308; }
+    .score-r { color: #8b5cf6; }
+    .bar-m { background: linear-gradient(90deg, #ef4444, #f87171); }
+    .bar-c { background: linear-gradient(90deg, #eab308, #facc15); }
+    .bar-r { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
+    .dominant-card {
+      text-align: center;
+      padding: 24px;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.1));
+      border: 1px solid var(--accent-primary);
+      border-radius: 16px;
+      margin-bottom: 24px;
+    }
+    .dominant-icon {
+      font-size: 3rem;
+      margin-bottom: 12px;
+    }
+    .dominant-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+    .dominant-subtitle {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-right: 16px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+  </style>
 </head>
 <body>
   <main class="container">
-    <h1>Meu resultado</h1>
+    <h1>DTE</h1>
+    <p class="brand-subtitle">Seu Resultado</p>
 
     <div class="card">
-      <p>
-        Aqui está o seu resultado mais recente.
-      </p>
-      <p class="scale-legend">
-        <a href="/quiz.html" style="color:#a5b4fc;text-decoration:none;">Responder novamente</a> ·
-        <a href="#" id="logout" style="color:#a5b4fc;text-decoration:none;">Sair</a>
-      </p>
       <p class="scale-legend" id="status-msg">Carregando...</p>
+      <div class="auth-links">
+        <a href="/quiz.html">Responder novamente</a>
+        <span style="margin:0 8px;">·</span>
+        <a href="#" id="logout">Sair</a>
+      </div>
     </div>
 
     <section id="results" class="results visible">
+      <!-- Dominant sphere -->
+      <div id="dominant-card" class="dominant-card">
+        <div id="dominant-icon" class="dominant-icon">🎯</div>
+        <div class="dominant-title">Sua esfera dominante</div>
+        <div id="dominant-name" class="dominant-subtitle">Carregando...</div>
+      </div>
+
+      <!-- Triangle visualization -->
       <div class="card">
-        <h2>Resultado</h2>
-        <div class="results-grid">
-          <div class="result-box">
-            <div class="result-title">Segurança · Estirpe Pátria</div>
-            <div>Média: <span id="score-M" class="result-value"></span></div>
-            <div>Perfil: <span id="label-M"></span></div>
-            <div>Participação no triângulo: <span id="weight-M"></span></div>
-          </div>
-          <div class="result-box">
-            <div class="result-title">Prosperidade · Ventos Áureo</div>
-            <div>Média: <span id="score-C" class="result-value"></span></div>
-            <div>Perfil: <span id="label-C"></span></div>
-            <div>Participação no triângulo: <span id="weight-C"></span></div>
-          </div>
-          <div class="result-box">
-            <div class="result-title">Sentido · Sociedade da Fé</div>
-            <div>Média: <span id="score-R" class="result-value"></span></div>
-            <div>Perfil: <span id="label-R"></span></div>
-            <div>Participação no triângulo: <span id="weight-R"></span></div>
+        <h2>Sua posição no triângulo</h2>
+        <p class="scale-legend">O ponto verde mostra onde você está em relação às três esferas. Quanto mais perto de um vértice, maior sua afinidade com aquela esfera.</p>
+        
+        <div class="triangle-container">
+          <canvas id="triangle-canvas"></canvas>
+        </div>
+        
+        <div style="text-align:center;margin-top:16px;">
+          <span class="legend-item"><span class="legend-dot" style="background:#10b981;"></span> Sua posição</span>
+        </div>
+      </div>
+
+      <!-- Detailed scores -->
+      <div class="card">
+        <h2>Pontuação detalhada</h2>
+        <p class="scale-legend">Sua média em cada esfera (escala de -10 a +10)</p>
+        
+        <div class="score-card">
+          <div class="score-icon">⚔️</div>
+          <div class="score-info">
+            <div class="score-title score-m">SEGURANÇA · Estirpe Pátria</div>
+            <div class="score-value score-m"><span id="score-M">--</span></div>
+            <div class="score-label"><span id="label-M">--</span> · <span id="weight-M">--</span> do triângulo</div>
+            <div class="score-bar-container">
+              <div id="bar-M" class="score-bar bar-m" style="width:0%"></div>
+            </div>
           </div>
         </div>
-        <p>
-          Esfera dominante identificada:
-          <span id="dominant-esfera" class="highlight"></span>
-        </p>
 
-        <h3>Triângulo</h3>
-        <p style="font-size:0.9rem;color:#9ca3af;">
-          O ponto abaixo mostra sua posição relativa entre as três Esferas.
-        </p>
-        <canvas id="triangle-canvas" width="600" height="420"></canvas>
+        <div class="score-card">
+          <div class="score-icon">💰</div>
+          <div class="score-info">
+            <div class="score-title score-c">PROSPERIDADE · Ventos Áureo</div>
+            <div class="score-value score-c"><span id="score-C">--</span></div>
+            <div class="score-label"><span id="label-C">--</span> · <span id="weight-C">--</span> do triângulo</div>
+            <div class="score-bar-container">
+              <div id="bar-C" class="score-bar bar-c" style="width:0%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="score-card">
+          <div class="score-icon">🙏</div>
+          <div class="score-info">
+            <div class="score-title score-r">SENTIDO · Sociedade da Fé</div>
+            <div class="score-value score-r"><span id="score-R">--</span></div>
+            <div class="score-label"><span id="label-R">--</span> · <span id="weight-R">--</span> do triângulo</div>
+            <div class="score-bar-container">
+              <div id="bar-R" class="score-bar bar-r" style="width:0%"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <div id="admin-links" class="card" style="display:none;">
       <h2>Administração</h2>
-      <p class="scale-legend">
-        <a href="/admin-dashboard.html" style="color:#a5b4fc;text-decoration:none;">Abrir painel do admin</a>
-      </p>
+      <div class="auth-links">
+        <a href="/admin-dashboard.html">Abrir painel do admin</a>
+      </div>
     </div>
   </main>
 
   <script type="module" src="/js/result.js"></script>
+  <script src="/js/keep-alive.js"></script>
 </body>
 </html>

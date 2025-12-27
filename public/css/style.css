@@ -606,17 +606,41 @@ canvas {
 }
 
 /* Responsive */
+
+/* Tablets */
+@media (max-width: 900px) {
+  .container {
+    max-width: 100%;
+    padding: 24px 16px 70px;
+  }
+  
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile */
 @media (max-width: 600px) {
   .container {
-    padding: 20px 16px 60px;
+    padding: 16px 12px 60px;
   }
   
   .card {
-    padding: 20px 16px;
+    padding: 16px 14px;
+    border-radius: 12px;
   }
   
   h1 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
+  }
+  
+  h2 {
+    font-size: 0.95rem;
+  }
+  
+  .brand-subtitle {
+    font-size: 0.75rem;
+    margin-bottom: 20px;
   }
   
   .menu-item {
@@ -632,6 +656,138 @@ canvas {
   button, a.button {
     width: 100%;
     text-align: center;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+  
+  .question-card {
+    padding: 14px;
+    margin-bottom: 12px;
+  }
+  
+  .question-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .options-row label {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
+  
+  .options-row input[type="radio"] {
+    width: 18px;
+    height: 18px;
+  }
+  
+  /* Score cards mobile */
+  .score-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+  
+  .score-icon {
+    font-size: 1.5rem;
+  }
+  
+  .score-value {
+    font-size: 1.3rem;
+  }
+  
+  /* Triangle canvas mobile */
+  #triangle-canvas {
+    height: 320px !important;
+  }
+  
+  /* Code input mobile */
+  .code-input {
+    gap: 4px;
+  }
+  
+  .code-input input {
+    width: 40px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+  
+  /* Invite buttons mobile */
+  .invite-actions {
+    flex-direction: column;
+  }
+  
+  .invite-actions button {
+    min-width: 100%;
+  }
+  
+  /* Auth links spacing */
+  .auth-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .auth-links span {
+    display: none;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 380px) {
+  h1 {
+    font-size: 1.1rem;
+  }
+  
+  .card {
+    padding: 14px 12px;
+  }
+  
+  .question-text {
+    font-size: 0.85rem;
+  }
+  
+  .code-input input {
+    width: 35px;
+    height: 45px;
+    font-size: 1rem;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1000px;
+  }
+  
+  .card {
+    padding: 28px 32px;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  .question-text {
+    font-size: 1.05rem;
+  }
+  
+  #triangle-canvas {
+    height: 500px !important;
+  }
+}
+
+/* Extra large screens */
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1100px;
+  }
+  
+  h1 {
+    font-size: 2.8rem;
+  }
+  
+  .card {
+    padding: 32px 40px;
   }
 }
 

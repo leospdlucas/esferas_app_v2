@@ -490,6 +490,20 @@ app.get("/api/admin/aggregate", authRequired, adminOnly, (req, res) => {
   });
 });
 
+// Health check endpoint for keep-alive
+app.get("/api/health", (req, res) => {
+  res.json({ 
+    status: "ok", 
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime()
+  });
+});
+
+// Keep-alive ping endpoint (lightweight)
+app.get("/api/ping", (req, res) => {
+  res.send("pong");
+});
+
 app.listen(PORT, () => {
   console.log(`DTE rodando em http://localhost:${PORT}`);
 });

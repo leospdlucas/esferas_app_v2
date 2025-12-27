@@ -33,8 +33,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     const aggPoint = computeTriangleCoords(Number(data.w_M), Number(data.w_C), Number(data.w_R));
 
     plotTriangle(document.getElementById("triangle-canvas"), aggPoint, {
-      label: "Agregado",
-      points
+      label: "Média",
+      points,
+      weights: { w_M: Number(data.w_M), w_C: Number(data.w_C), w_R: Number(data.w_R) }
     });
   } catch (err) {
     status.textContent = err.message;

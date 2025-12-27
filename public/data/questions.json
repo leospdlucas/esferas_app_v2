@@ -2,151 +2,151 @@
   {
     "id": 1,
     "axis": "M",
-    "text": "Segurança acima da liberdade: Se eu tivesse que escolher, preferiria viver em uma sociedade muito segura (com baixa criminalidade e estabilidade), mesmo que isso significasse ter menos liberdade pessoal."
+    "text": "Se for preciso escolher entre liberdade e segurança, fico com a segurança — de que adianta ser livre se você pode ser assaltado ou morto a qualquer momento?"
   },
   {
     "id": 2,
     "axis": "M",
-    "text": "Vigilância para proteção: Considero aceitável que o governo monitore comunicações privadas se isso ajudar a prevenir ataques terroristas ou outras ameaças graves à segurança nacional."
+    "text": "Não tenho nada a esconder, então não me importo se o governo monitora mensagens e ligações para pegar bandidos e terroristas."
   },
   {
     "id": 3,
     "axis": "M",
-    "text": "Lealdade à pátria: Traição à pátria — como espionagem ou sabotagem de interesses nacionais — é um dos piores crimes que alguém pode cometer."
+    "text": "Quem entrega segredos do país para estrangeiros ou trabalha contra a própria nação merece as punições mais severas possíveis."
   },
   {
     "id": 4,
     "axis": "M",
-    "text": "Valor da hierarquia: A obediência a ordens de superiores hierárquicos é um valor essencial em organizações importantes. Questionar demais prejudica o funcionamento."
+    "text": "Ordem e disciplina são a base de qualquer sociedade que funciona — sem hierarquia e obediência, tudo vira bagunça."
   },
   {
     "id": 5,
     "axis": "M",
-    "text": "Poderes de emergência: Em situações de emergência nacional, o governo deve poder suspender temporariamente alguns direitos constitucionais para agir com rapidez."
+    "text": "Em tempos de crise, não dá para ficar de mimimi com direitos — o governo precisa ter mão firme para resolver o problema."
   },
   {
     "id": 6,
     "axis": "M",
-    "text": "Respeito aos símbolos nacionais: O respeito a símbolos nacionais como a bandeira e o hino deve ser exigido de todos os cidadãos."
+    "text": "Quem não respeita a bandeira e o hino do próprio país não merece viver nele — deveria ir embora."
   },
   {
     "id": 7,
     "axis": "M",
-    "text": "Demonstração de força: Uma nação que não demonstra força militar e firmeza acaba sendo desrespeitada por outras nações."
+    "text": "País que não investe em forças armadas fortes vira capacho das grandes potências — respeito só se conquista com força."
   },
   {
     "id": 8,
     "axis": "M",
-    "text": "Estado forte contra o crime: Quando o Estado é fraco, grupos criminosos e movimentos extremistas acabam assumindo o controle de comunidades."
+    "text": "Onde o Estado é fraco, o crime organizado domina — precisamos de um governo forte que não tenha medo de agir com dureza."
   },
   {
     "id": 9,
     "axis": "M",
-    "text": "Estabilidade política: A estabilidade política é mais importante do que a alternância constante de partidos e ideias no poder."
+    "text": "Essa troca constante de governo só atrasa o país — seria melhor ter líderes que ficassem mais tempo para fazer as coisas acontecerem."
   },
   {
     "id": 10,
     "axis": "M",
-    "text": "Liberdade através da proteção: Uma sociedade só é verdadeiramente livre quando está bem protegida contra ameaças externas e internas."
+    "text": "Direitos humanos são importantes, mas primeiro vem a segurança do cidadão de bem — bandido bom é bandido preso ou pior."
   },
   {
     "id": 11,
     "axis": "C",
-    "text": "Menos intervenção estatal: Quanto menos o governo se intromete na economia, melhor para o crescimento econômico e para a prosperidade de todos."
+    "text": "O governo só atrapalha a economia — quanto menos impostos e regulações, mais as empresas crescem e todo mundo ganha."
   },
   {
     "id": 12,
     "axis": "C",
-    "text": "Recompensa pelo risco: Pessoas que assumem riscos financeiros ao criar empresas merecem ficar muito mais ricas, pois estão gerando empregos e riqueza."
+    "text": "Quem arrisca tudo para empreender e dá certo merece cada centavo que ganha — o lucro é a recompensa justa pela coragem."
   },
   {
     "id": 13,
     "axis": "C",
-    "text": "Impostos prejudicam o crescimento: Impostos altos atrapalham o crescimento econômico porque tiram dinheiro de quem produz e investe."
+    "text": "Impostos são um roubo legalizado — o governo pega o dinheiro de quem trabalha para sustentar quem não quer fazer nada."
   },
   {
     "id": 14,
     "axis": "C",
-    "text": "Desigualdade natural: É natural que exista desigualdade de renda, pois cada pessoa colhe os resultados do próprio esforço, talento e escolhas."
+    "text": "Se você é pobre, em grande parte a culpa é sua — quem se esforça de verdade consegue subir na vida."
   },
   {
     "id": 15,
     "axis": "C",
-    "text": "Benefícios da competição: A livre concorrência entre empresas é a melhor forma de melhorar produtos, reduzir preços e estimular a inovação."
+    "text": "O mercado livre resolve tudo melhor que o governo — empresas competindo entre si sempre entregam produtos melhores e mais baratos."
   },
   {
     "id": 16,
     "axis": "C",
-    "text": "Responsabilidade financeira pessoal: As pessoas são, em grande parte, responsáveis por sua própria situação financeira — suas escolhas determinam seu sucesso."
+    "text": "Cada um é responsável pelo próprio sucesso ou fracasso — ficar culpando a sociedade é desculpa de quem não quer trabalhar."
   },
   {
     "id": 17,
     "axis": "C",
-    "text": "Empreender é direito fundamental: A liberdade para empreender é um direito fundamental tão importante quanto a liberdade de expressão."
+    "text": "A liberdade de fazer negócios e enriquecer é sagrada — ninguém tem o direito de limitar o quanto você pode ganhar."
   },
   {
     "id": 18,
     "axis": "C",
-    "text": "Excesso de regulação: Regulamentações governamentais em excesso sufocam a inovação e impedem o crescimento econômico."
+    "text": "Leis trabalhistas exageradas só prejudicam — protegem vagabundo e punem o patrão que quer produzir."
   },
   {
     "id": 19,
     "axis": "C",
-    "text": "Prosperidade não é soma zero: O sucesso financeiro de algumas pessoas não impede o sucesso das outras — empreendedores criam oportunidades para muitos."
+    "text": "Bilionários são heróis que criaram riqueza para milhões de pessoas — deveríamos admirá-los, não criticá-los por terem dinheiro."
   },
   {
     "id": 20,
     "axis": "C",
-    "text": "Mercado acima do governo: A estabilidade econômica depende mais do bom funcionamento dos mercados do que das decisões de políticos."
+    "text": "Políticos não entendem nada de economia — deveriam deixar os empresários e o mercado tomarem as decisões importantes."
   },
   {
     "id": 21,
     "axis": "R",
-    "text": "Necessidade de espiritualidade: A vida humana tem pouco sentido profundo sem alguma forma de crença espiritual ou transcendente."
+    "text": "Sem Deus ou alguma fé, a vida não tem sentido — só a espiritualidade pode dar um propósito verdadeiro à existência."
   },
   {
     "id": 22,
     "axis": "R",
-    "text": "Legal não é igual a moral: Existem comportamentos legalmente permitidos que ainda assim são moralmente errados segundo princípios superiores."
+    "text": "A lei dos homens é falha — existe uma lei moral superior, divina, que deveria guiar nossas decisões como sociedade."
   },
   {
     "id": 23,
     "axis": "R",
-    "text": "Sabedoria das tradições: Tradições religiosas antigas ainda contêm sabedoria valiosa para resolver problemas dos tempos atuais."
+    "text": "A sabedoria milenar das religiões vale mais que as modas passageiras do mundo moderno — nossos antepassados sabiam viver melhor."
   },
   {
     "id": 24,
     "axis": "R",
-    "text": "Práticas espirituais fortalecem: Práticas como orações e meditações fortalecem o caráter e ajudam a tomar melhores decisões na vida."
+    "text": "Quem ora, medita e cultiva a espiritualidade tem uma paz interior que nenhum dinheiro ou sucesso material consegue dar."
   },
   {
     "id": 25,
     "axis": "R",
-    "text": "Relativismo moral enfraquece: A sociedade se enfraquece quando relativiza demais os valores morais, tratando tudo como opinião pessoal."
+    "text": "O relativismo moral está destruindo a sociedade — precisamos voltar a defender que algumas coisas são certas e outras são erradas, ponto final."
   },
   {
     "id": 26,
     "axis": "R",
-    "text": "Fé fortalece a família: Famílias que praticam juntas sua fé tendem a ser mais unidas e resilientes em momentos de crise."
+    "text": "Famílias que rezam juntas permanecem juntas — a fé é o alicerce de um lar sólido e de filhos bem-criados."
   },
   {
     "id": 27,
     "axis": "R",
-    "text": "Vazio existencial: Muitas pessoas sentem um vazio mesmo tendo dinheiro e sucesso — falta-lhes propósito espiritual."
+    "text": "Por mais rico e famoso que alguém seja, se não tiver fé, vai continuar sentindo um vazio que nada material preenche."
   },
   {
     "id": 28,
     "axis": "R",
-    "text": "Fé em tempos de crise: Comunidades de fé oferecem sentido e esperança em crises que política e economia não conseguem resolver sozinhas."
+    "text": "Quando tudo desmorona — doença, morte, tragédia — só a fé e a comunidade religiosa conseguem dar força para seguir em frente."
   },
   {
     "id": 29,
     "axis": "R",
-    "text": "Experiências espirituais reais: Experiências espirituais profundas são difíceis de explicar racionalmente, mas são absolutamente reais para quem as vive."
+    "text": "Experiências espirituais como sentir a presença de Deus, milagres e orações atendidas são absolutamente reais — quem nega nunca viveu uma."
   },
   {
     "id": 30,
     "axis": "R",
-    "text": "Comunidade de fé resistente: Comunidades que colocam a fé e valores espirituais no centro resistem melhor às crises do mundo moderno."
+    "text": "Uma comunidade unida pela fé é mais forte que qualquer crise — os valores espirituais protegem contra as tentações e vícios do mundo."
   }
 ]
