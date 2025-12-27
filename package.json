@@ -10,14 +10,11 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "better-sqlite3": "^11.6.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
-    "qrcode": "^1.5.4"
-  },
-  "overrides": {
-    "better-sqlite3": "$better-sqlite3"
+    "qrcode": "^1.5.4",
+    "sql.js": "^1.11.0"
   }
 }

@@ -1,4 +1,4 @@
-# Dependencies
+# Dependencies - IMPORTANTE: nunca commitar node_modules!
 node_modules/
 
 # Environment
@@ -6,6 +6,7 @@ node_modules/
 
 # Database (local development)
 data/
+*.db
 
 # OS files
 .DS_Store
@@ -18,3 +19,6 @@ Thumbs.db
 # Logs
 *.log
 npm-debug.log*
+
+# Package lock pode causar problemas entre plataformas
+package-lock.json
