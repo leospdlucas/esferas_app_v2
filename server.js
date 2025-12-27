@@ -504,6 +504,60 @@ app.get("/api/ping", (req, res) => {
   res.send("pong");
 });
 
+// Database stats for admin
+app.get("/api/admin/db-stats", authRequired, adminOnly, (req, res) => {
+  try {
+    const users = db.prepare("SELECT COUNT(*) as count FROM users").get().count;
+    const submissions = db.prepare("SELECT COUNT(*) as count FROM submissions").get().count;
+    const invites = db.prepare("SELECT COUNT(*) as count FROM invites").get().count;
+    const today = db.prepare(`
+      SELECT COUNT(*) as count FROM users 
+      WHERE DATE(created_at) = DATE('now')
+    `).get().count;
+    
+    res.json({ users, submissions, invites, today });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// SQL query endpoint for admin (READ ONLY)
+app.post("/api/admin/db-query", authRequired, adminOnly, (req, res) => {
+  const { sql } = req.body || {};
+  
+  if (!sql || typeof sql !== "string") {
+    return res.status(400).json({ error: "SQL query is required" });
+  }
+  
+  // Security: Only allow SELECT statements
+  const cleanSql = sql.trim().toLowerCase();
+  if (!cleanSql.startsWith("select")) {
+    return res.status(403).json({ error: "Apenas consultas SELECT são permitidas." });
+  }
+  
+  // Block dangerous keywords
+  const forbidden = ["insert", "update", "delete", "drop", "alter", "create", "truncate", "replace", "attach", "detach"];
+  for (const word of forbidden) {
+    if (cleanSql.includes(word)) {
+      return res.status(403).json({ error: `Operação '${word.toUpperCase()}' não permitida.` });
+    }
+  }
+  
+  try {
+    const start = Date.now();
+    const stmt = db.prepare(sql);
+    const rows = stmt.all();
+    const time = Date.now() - start;
+    
+    // Get column names
+    const columns = rows.length > 0 ? Object.keys(rows[0]) : [];
+    
+    res.json({ columns, rows, time, count: rows.length });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`DTE rodando em http://localhost:${PORT}`);
 });

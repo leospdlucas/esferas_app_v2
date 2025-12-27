@@ -2,151 +2,151 @@
   {
     "id": 1,
     "axis": "M",
-    "text": "Se for preciso escolher entre liberdade e segurança, fico com a segurança — de que adianta ser livre se você pode ser assaltado ou morto a qualquer momento?"
+    "text": "Prefiro viver em um lugar muito seguro, mesmo que isso signifique ter menos liberdade. Por exemplo: aceito câmeras de vigilância em cada esquina, toques de recolher à noite, ou precisar mostrar documentos para entrar em certos bairros."
   },
   {
     "id": 2,
     "axis": "M",
-    "text": "Não tenho nada a esconder, então não me importo se o governo monitora mensagens e ligações para pegar bandidos e terroristas."
+    "text": "Não me importo se o governo monitora minhas mensagens e ligações para combater o crime. Por exemplo: se a polícia quiser ler meus WhatsApps ou ouvir minhas chamadas sem mandado, tudo bem — não tenho nada a esconder."
   },
   {
     "id": 3,
     "axis": "M",
-    "text": "Quem entrega segredos do país para estrangeiros ou trabalha contra a própria nação merece as punições mais severas possíveis."
+    "text": "Traidores da pátria merecem as punições mais severas possíveis. Por exemplo: quem vaza segredos militares, espiona para outros países ou financia inimigos deveria pegar prisão perpétua ou pena de morte."
   },
   {
     "id": 4,
     "axis": "M",
-    "text": "Ordem e disciplina são a base de qualquer sociedade que funciona — sem hierarquia e obediência, tudo vira bagunça."
+    "text": "Uma sociedade só funciona com hierarquia clara e obediência às autoridades. Por exemplo: soldados devem obedecer oficiais sem questionar, filhos devem respeitar pais, funcionários devem acatar chefes."
   },
   {
     "id": 5,
     "axis": "M",
-    "text": "Em tempos de crise, não dá para ficar de mimimi com direitos — o governo precisa ter mão firme para resolver o problema."
+    "text": "Em tempos de crise grave, o governo deve ter poderes especiais, mesmo que isso suspenda alguns direitos. Por exemplo: durante uma pandemia ou guerra, aceito lockdowns forçados, censura de \"fake news\", ou prisão de quem desobedece."
   },
   {
     "id": 6,
     "axis": "M",
-    "text": "Quem não respeita a bandeira e o hino do próprio país não merece viver nele — deveria ir embora."
+    "text": "Quem desrespeita os símbolos nacionais não merece viver no país. Por exemplo: quem queima a bandeira, vaia o hino, ou fala mal do Brasil no exterior deveria perder a cidadania ou ser deportado."
   },
   {
     "id": 7,
     "axis": "M",
-    "text": "País que não investe em forças armadas fortes vira capacho das grandes potências — respeito só se conquista com força."
+    "text": "Um país só é respeitado se tiver forças armadas poderosas. Por exemplo: o Brasil deveria investir pesado em tanques, aviões de guerra e porta-aviões, mesmo que isso signifique cortar gastos em outras áreas."
   },
   {
     "id": 8,
     "axis": "M",
-    "text": "Onde o Estado é fraco, o crime organizado domina — precisamos de um governo forte que não tenha medo de agir com dureza."
+    "text": "Bandido bom é bandido na cadeia — ou pior. Por exemplo: apoio penas mais duras, prisão perpétua para reincidentes, e acho que a polícia deveria ter mais liberdade para agir, mesmo que às vezes erre."
   },
   {
     "id": 9,
     "axis": "M",
-    "text": "Essa troca constante de governo só atrasa o país — seria melhor ter líderes que ficassem mais tempo para fazer as coisas acontecerem."
+    "text": "Trocas frequentes de governo só atrapalham o país. Por exemplo: seria melhor ter um líder forte que ficasse 10 ou 20 anos no poder para fazer reformas profundas, sem ficar mudando de direção a cada eleição."
   },
   {
     "id": 10,
     "axis": "M",
-    "text": "Direitos humanos são importantes, mas primeiro vem a segurança do cidadão de bem — bandido bom é bandido preso ou pior."
+    "text": "A segurança da população honesta deve vir antes dos direitos de criminosos. Por exemplo: se um suspeito morrer durante uma operação policial, não vejo problema — ele deveria ter pensado nisso antes de entrar para o crime."
   },
   {
     "id": 11,
     "axis": "C",
-    "text": "O governo só atrapalha a economia — quanto menos impostos e regulações, mais as empresas crescem e todo mundo ganha."
+    "text": "O governo só atrapalha a economia — quanto menos interferência, melhor. Por exemplo: empresas deveriam poder contratar e demitir livremente, sem leis trabalhistas rígidas, e o mercado deveria definir preços, não o governo."
   },
   {
     "id": 12,
     "axis": "C",
-    "text": "Quem arrisca tudo para empreender e dá certo merece cada centavo que ganha — o lucro é a recompensa justa pela coragem."
+    "text": "Quem arrisca tudo para empreender merece ficar rico. Por exemplo: se alguém largou emprego estável, investiu suas economias e trabalhou 16 horas por dia para criar uma empresa de sucesso, cada centavo do lucro é merecido."
   },
   {
     "id": 13,
     "axis": "C",
-    "text": "Impostos são um roubo legalizado — o governo pega o dinheiro de quem trabalha para sustentar quem não quer fazer nada."
+    "text": "Impostos altos são basicamente roubo legalizado. Por exemplo: é injusto o governo tirar 30-40% do meu salário para gastar com burocracia, políticos corruptos e programas sociais que sustentam quem não quer trabalhar."
   },
   {
     "id": 14,
     "axis": "C",
-    "text": "Se você é pobre, em grande parte a culpa é sua — quem se esforça de verdade consegue subir na vida."
+    "text": "Se você é pobre, em grande parte a responsabilidade é sua. Por exemplo: no Brasil existem histórias de pessoas que saíram da favela e ficaram ricas — quem se esforça de verdade, estuda e trabalha duro consegue vencer na vida."
   },
   {
     "id": 15,
     "axis": "C",
-    "text": "O mercado livre resolve tudo melhor que o governo — empresas competindo entre si sempre entregam produtos melhores e mais baratos."
+    "text": "O mercado livre resolve problemas melhor que o governo. Por exemplo: hospitais e escolas privadas funcionam melhor que públicos; Uber é melhor que táxi regulamentado; bancos digitais são melhores que estatais."
   },
   {
     "id": 16,
     "axis": "C",
-    "text": "Cada um é responsável pelo próprio sucesso ou fracasso — ficar culpando a sociedade é desculpa de quem não quer trabalhar."
+    "text": "Cada pessoa é responsável pelo próprio sucesso ou fracasso. Por exemplo: ficar culpando \"o sistema\", o racismo, a falta de oportunidades ou a família pobre é desculpa de quem não quer se esforçar de verdade."
   },
   {
     "id": 17,
     "axis": "C",
-    "text": "A liberdade de fazer negócios e enriquecer é sagrada — ninguém tem o direito de limitar o quanto você pode ganhar."
+    "text": "Não deveria existir limite para quanto uma pessoa pode enriquecer. Por exemplo: se Elon Musk ou Jeff Bezos conseguiram acumular 200 bilhões, é porque criaram valor — não cabe ao governo limitar ou taxar isso pesadamente."
   },
   {
     "id": 18,
     "axis": "C",
-    "text": "Leis trabalhistas exageradas só prejudicam — protegem vagabundo e punem o patrão que quer produzir."
+    "text": "Leis trabalhistas exageradas prejudicam mais do que ajudam. Por exemplo: a CLT engessa as empresas, encarece as contratações e protege funcionários ruins — seria melhor ter contratos mais flexíveis como nos EUA."
   },
   {
     "id": 19,
     "axis": "C",
-    "text": "Bilionários são heróis que criaram riqueza para milhões de pessoas — deveríamos admirá-los, não criticá-los por terem dinheiro."
+    "text": "Bilionários são heróis que movem a economia. Por exemplo: sem empreendedores como Jorge Paulo Lemann, Luciano Hang ou Flávio Rocha, milhões de brasileiros não teriam emprego — deveríamos admirá-los, não criticá-los."
   },
   {
     "id": 20,
     "axis": "C",
-    "text": "Políticos não entendem nada de economia — deveriam deixar os empresários e o mercado tomarem as decisões importantes."
+    "text": "Políticos não entendem de economia e deveriam interferir menos. Por exemplo: decisões sobre juros, câmbio e investimentos deveriam ser tomadas por economistas e empresários, não por deputados que nunca administraram nada."
   },
   {
     "id": 21,
     "axis": "R",
-    "text": "Sem Deus ou alguma fé, a vida não tem sentido — só a espiritualidade pode dar um propósito verdadeiro à existência."
+    "text": "Sem Deus ou alguma fé, a vida não tem sentido verdadeiro. Por exemplo: ateus podem até ser felizes, mas no fundo vivem um vazio existencial — só a espiritualidade pode dar propósito real à existência humana."
   },
   {
     "id": 22,
     "axis": "R",
-    "text": "A lei dos homens é falha — existe uma lei moral superior, divina, que deveria guiar nossas decisões como sociedade."
+    "text": "Existe uma lei moral superior às leis humanas. Por exemplo: mesmo que o aborto ou a eutanásia sejam legalizados, continuam sendo errados aos olhos de Deus — a lei divina vale mais que a lei dos homens."
   },
   {
     "id": 23,
     "axis": "R",
-    "text": "A sabedoria milenar das religiões vale mais que as modas passageiras do mundo moderno — nossos antepassados sabiam viver melhor."
+    "text": "A sabedoria das tradições religiosas vale mais que as modas modernas. Por exemplo: o casamento tradicional, a família com pai e mãe, e os valores cristãos funcionaram por 2.000 anos — não deveríamos abandoná-los por ideias novas."
   },
   {
     "id": 24,
     "axis": "R",
-    "text": "Quem ora, medita e cultiva a espiritualidade tem uma paz interior que nenhum dinheiro ou sucesso material consegue dar."
+    "text": "Quem cultiva a espiritualidade tem uma paz que o materialismo não dá. Por exemplo: pessoas que oram, meditam ou frequentam sua igreja/templo regularmente são mais equilibradas e felizes do que quem só busca dinheiro e prazer."
   },
   {
     "id": 25,
     "axis": "R",
-    "text": "O relativismo moral está destruindo a sociedade — precisamos voltar a defender que algumas coisas são certas e outras são erradas, ponto final."
+    "text": "O relativismo moral está destruindo a sociedade. Por exemplo: quando dizemos que \"cada um tem sua verdade\" e que não existe certo ou errado absoluto, abrimos a porta para todo tipo de degeneração e decadência."
   },
   {
     "id": 26,
     "axis": "R",
-    "text": "Famílias que rezam juntas permanecem juntas — a fé é o alicerce de um lar sólido e de filhos bem-criados."
+    "text": "Famílias que praticam sua fé juntas são mais unidas e fortes. Por exemplo: ir à missa/culto todo domingo, orar antes das refeições e ensinar valores religiosos aos filhos cria um lar mais estável e crianças mais bem-educadas."
   },
   {
     "id": 27,
     "axis": "R",
-    "text": "Por mais rico e famoso que alguém seja, se não tiver fé, vai continuar sentindo um vazio que nada material preenche."
+    "text": "Por mais sucesso material que alguém tenha, sem fé sempre faltará algo. Por exemplo: celebridades ricas que se suicidam ou caem em depressão provam que dinheiro e fama não preenchem o vazio que só Deus pode preencher."
   },
   {
     "id": 28,
     "axis": "R",
-    "text": "Quando tudo desmorona — doença, morte, tragédia — só a fé e a comunidade religiosa conseguem dar força para seguir em frente."
+    "text": "Nos momentos mais difíceis da vida, só a fé sustenta de verdade. Por exemplo: quando alguém perde um filho, recebe um diagnóstico terminal ou enfrenta uma tragédia, a comunidade religiosa e a crença em algo maior são o que salvam."
   },
   {
     "id": 29,
     "axis": "R",
-    "text": "Experiências espirituais como sentir a presença de Deus, milagres e orações atendidas são absolutamente reais — quem nega nunca viveu uma."
+    "text": "Experiências espirituais como milagres e orações atendidas são absolutamente reais. Por exemplo: conheço pessoas que foram curadas após orações, que tiveram visões ou sonhos proféticos — quem nega nunca experimentou o poder de Deus."
   },
   {
     "id": 30,
     "axis": "R",
-    "text": "Uma comunidade unida pela fé é mais forte que qualquer crise — os valores espirituais protegem contra as tentações e vícios do mundo."
+    "text": "Os valores espirituais protegem contra os vícios e tentações do mundo moderno. Por exemplo: jovens que crescem na igreja têm menos chance de se envolver com drogas, promiscuidade ou criminalidade do que jovens sem religião."
   }
 ]

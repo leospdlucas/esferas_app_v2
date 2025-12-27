@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>DTE · Consulta ao Banco</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    .sql-editor {
+      width: 100%;
+      min-height: 120px;
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+      font-size: 0.9rem;
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 16px;
+      color: var(--text-primary);
+      resize: vertical;
+    }
+    .sql-editor:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+    }
+    .query-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .query-buttons button {
+      flex: 1;
+      min-width: 150px;
+    }
+    .preset-queries {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .preset-btn {
+      padding: 8px 14px !important;
+      font-size: 0.8rem !important;
+      background: rgba(99, 102, 241, 0.2) !important;
+      border: 1px solid var(--accent-primary) !important;
+      color: var(--accent-primary) !important;
+      margin: 0 !important;
+      width: auto !important;
+    }
+    .preset-btn:hover {
+      background: rgba(99, 102, 241, 0.3) !important;
+    }
+    .results-container {
+      margin-top: 20px;
+      overflow-x: auto;
+    }
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .results-table th {
+      background: rgba(99, 102, 241, 0.2);
+      color: var(--accent-tertiary);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 12px 10px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+    }
+    .results-table td {
+      padding: 10px;
+      border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+      color: var(--text-secondary);
+      max-width: 300px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .results-table tr:hover td {
+      background: rgba(99, 102, 241, 0.05);
+      color: var(--text-primary);
+    }
+    .results-count {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .export-buttons {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .export-buttons button {
+      padding: 8px 16px !important;
+      font-size: 0.8rem !important;
+      width: auto !important;
+    }
+    .error-box {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid var(--accent-danger);
+      border-radius: 8px;
+      padding: 16px;
+      color: var(--accent-danger);
+      font-family: monospace;
+      font-size: 0.85rem;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .stat-box {
+      background: rgba(10, 10, 30, 0.5);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+    }
+    .stat-value {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1>DTE</h1>
+    <p class="brand-subtitle">Consulta ao Banco de Dados</p>
+
+    <div class="card">
+      <p class="scale-legend">
+        <a href="/admin-dashboard.html">← Voltar ao painel</a>
+        <span style="margin:0 8px;">·</span>
+        <a href="#" id="logout">Sair</a>
+      </p>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="card">
+      <h2>📊 Estatísticas rápidas</h2>
+      <div class="stats-grid" id="stats-grid">
+        <div class="stat-box">
+          <div class="stat-value" id="stat-users">--</div>
+          <div class="stat-label">Usuários</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="stat-submissions">--</div>
+          <div class="stat-label">Respostas</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="stat-invites">--</div>
+          <div class="stat-label">Convites</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="stat-today">--</div>
+          <div class="stat-label">Hoje</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SQL Query -->
+    <div class="card">
+      <h2>🔍 Consulta SQL</h2>
+      <p class="scale-legend">Execute consultas SELECT no banco de dados. Apenas leitura permitida.</p>
+      
+      <div class="preset-queries">
+        <button class="preset-btn" data-query="SELECT id, name, email, role, created_at FROM users ORDER BY created_at DESC LIMIT 50">Usuários</button>
+        <button class="preset-btn" data-query="SELECT u.name, u.email, s.S_M, s.S_C, s.S_R, s.created_at FROM submissions s JOIN users u ON s.user_id = u.id ORDER BY s.created_at DESC LIMIT 50">Respostas</button>
+        <button class="preset-btn" data-query="SELECT code, uses, max_uses, expires_at, created_at FROM invites ORDER BY created_at DESC LIMIT 50">Convites</button>
+        <button class="preset-btn" data-query="SELECT role, COUNT(*) as total FROM users GROUP BY role">Por role</button>
+        <button class="preset-btn" data-query="SELECT DATE(created_at) as dia, COUNT(*) as total FROM users GROUP BY DATE(created_at) ORDER BY dia DESC LIMIT 30">Cadastros/dia</button>
+        <button class="preset-btn" data-query="SELECT AVG(S_M) as media_M, AVG(S_C) as media_C, AVG(S_R) as media_R FROM submissions">Médias</button>
+      </div>
+
+      <textarea id="sql-input" class="sql-editor" placeholder="Digite sua consulta SQL aqui...
+Exemplo: SELECT * FROM users LIMIT 10"></textarea>
+      
+      <div class="query-buttons">
+        <button type="button" id="btn-execute">▶ Executar</button>
+        <button type="button" id="btn-clear" class="secondary">Limpar</button>
+      </div>
+      
+      <p id="query-msg" class="scale-legend" style="margin-top:12px;"></p>
+    </div>
+
+    <!-- Results -->
+    <div class="card" id="results-card" style="display:none;">
+      <h2>📋 Resultados</h2>
+      <p class="results-count" id="results-count"></p>
+      
+      <div class="export-buttons">
+        <button type="button" id="btn-export-csv" class="secondary">📥 Exportar CSV</button>
+        <button type="button" id="btn-export-json" class="secondary">📥 Exportar JSON</button>
+        <button type="button" id="btn-copy" class="secondary">📋 Copiar</button>
+      </div>
+      
+      <div class="results-container">
+        <div id="results-content"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/keep-alive.js"></script>
+  <script type="module" src="/js/db-query.js"></script>
+</body>
+</html>

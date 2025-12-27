@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>DTE · Questionário (Convidado)</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>DTE</h1>
+    <p class="brand-subtitle">Questionário de Tendências</p>
+
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+        <span style="font-size:1.5rem;">👤</span>
+        <div>
+          <strong style="color:var(--accent-tertiary);">Modo Convidado</strong>
+          <p class="scale-legend" style="margin:0;">Seu resultado não será salvo. <a href="/">Criar conta</a> para salvar.</p>
+        </div>
+      </div>
+      <p style="color:var(--text-secondary);">
+        Responda todas as afirmações abaixo de acordo com o quanto você concorda ou discorda.
+        Ao finalizar, clique em <strong style="color:var(--accent-primary);">Ver meu resultado</strong>.
+      </p>
+      <p class="scale-legend" id="status-msg">Carregando perguntas...</p>
+    </div>
+
+    <div class="card">
+      <h2>Escala de respostas</h2>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;text-align:center;font-size:0.8rem;">
+        <div style="padding:10px;background:rgba(239,68,68,0.2);border-radius:8px;color:var(--accent-danger);">
+          <strong>1</strong><br/>Discordo totalmente
+        </div>
+        <div style="padding:10px;background:rgba(245,158,11,0.2);border-radius:8px;color:var(--accent-warning);">
+          <strong>2</strong><br/>Discordo parcialmente
+        </div>
+        <div style="padding:10px;background:rgba(100,116,139,0.2);border-radius:8px;color:var(--text-muted);">
+          <strong>3</strong><br/>Neutro
+        </div>
+        <div style="padding:10px;background:rgba(6,182,212,0.2);border-radius:8px;color:var(--accent-tertiary);">
+          <strong>4</strong><br/>Concordo parcialmente
+        </div>
+        <div style="padding:10px;background:rgba(16,185,129,0.2);border-radius:8px;color:var(--accent-success);">
+          <strong>5</strong><br/>Concordo totalmente
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Afirmações</h2>
+      <form id="quiz-form"></form>
+    </div>
+    
+    <button type="button" id="submit-btn" disabled style="width:100%;">Ver meu resultado</button>
+    <p id="submit-msg" class="scale-legend" style="text-align:center;margin-top:12px;"></p>
+  </main>
+
+  <script type="module" src="/js/quiz-guest.js"></script>
+  <script src="/js/keep-alive.js"></script>
+</body>
+</html>

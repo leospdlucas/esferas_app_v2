@@ -44,9 +44,19 @@ export function computeScores(questions, answersById) {
 }
 
 export function normalizeAffinities(S_M, S_C, S_R) {
+  // Converte de -10/+10 para 0/20
   let A_M = S_M + 10.0;
   let A_C = S_C + 10.0;
   let A_R = S_R + 10.0;
+
+  // Amplifica as diferenças com função exponencial
+  // Expoente 2.0 faz com que diferenças pequenas se tornem maiores
+  // Ex: se A_M=15, A_C=12, A_R=10 → antes: 40.5%, 32.4%, 27%
+  //                                → depois: 51%, 32.6%, 16.4%
+  const exponent = 2.0;
+  A_M = Math.pow(A_M, exponent);
+  A_C = Math.pow(A_C, exponent);
+  A_R = Math.pow(A_R, exponent);
 
   const total = A_M + A_C + A_R;
   if (total === 0) {
@@ -59,6 +69,7 @@ export function normalizeAffinities(S_M, S_C, S_R) {
     w_R: A_R / total
   };
 }
+
 
 export function computeTriangleCoords(w_M, w_C, w_R) {
   const x_M = 0.0, y_M = 0.0;

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>DTE · Meu Resultado</title>
+  <title>DTE · Resultado (Convidado)</title>
   <link rel="stylesheet" href="/css/style.css" />
   <style>
     .triangle-container {
@@ -107,6 +107,19 @@
       height: 12px;
       border-radius: 50%;
     }
+    .guest-banner {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(239, 68, 68, 0.1));
+      border: 1px solid var(--accent-warning);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .guest-banner-title {
+      color: var(--accent-warning);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
     /* Share section */
     .share-section {
       text-align: center;
@@ -144,35 +157,12 @@
     .share-btn:hover {
       transform: translateY(-2px) !important;
     }
-    .share-btn.whatsapp {
-      background: #25D366 !important;
-      color: white !important;
-    }
-    .share-btn.twitter {
-      background: #1DA1F2 !important;
-      color: white !important;
-    }
-    .share-btn.facebook {
-      background: #1877F2 !important;
-      color: white !important;
-    }
-    .share-btn.telegram {
-      background: #0088cc !important;
-      color: white !important;
-    }
-    .share-btn.linkedin {
-      background: #0A66C2 !important;
-      color: white !important;
-    }
-    .share-btn.download {
-      background: var(--gradient-primary) !important;
-      color: white !important;
-    }
-    .share-btn.copy {
-      background: rgba(99, 102, 241, 0.2) !important;
-      border: 1px solid var(--accent-primary) !important;
-      color: var(--accent-primary) !important;
-    }
+    .share-btn.whatsapp { background: #25D366 !important; color: white !important; }
+    .share-btn.twitter { background: #1DA1F2 !important; color: white !important; }
+    .share-btn.facebook { background: #1877F2 !important; color: white !important; }
+    .share-btn.telegram { background: #0088cc !important; color: white !important; }
+    .share-btn.download { background: var(--gradient-primary) !important; color: white !important; }
+    .share-btn.copy { background: rgba(99, 102, 241, 0.2) !important; border: 1px solid var(--accent-primary) !important; color: var(--accent-primary) !important; }
     .share-divider {
       display: flex;
       align-items: center;
@@ -214,13 +204,10 @@
     <h1>DTE</h1>
     <p class="brand-subtitle">Seu Resultado</p>
 
-    <div class="card">
-      <p class="scale-legend" id="status-msg">Carregando...</p>
-      <div class="auth-links">
-        <a href="/quiz.html">Responder novamente</a>
-        <span style="margin:0 8px;">·</span>
-        <a href="#" id="logout">Sair</a>
-      </div>
+    <!-- Guest banner -->
+    <div class="guest-banner">
+      <div class="guest-banner-title">👤 Resultado temporário</div>
+      <p class="scale-legend" style="margin:0;">Este resultado não foi salvo. <a href="/cadastro.html">Crie uma conta</a> para salvar e acompanhar.</p>
     </div>
 
     <section id="results" class="results visible">
@@ -234,7 +221,7 @@
       <!-- Triangle visualization -->
       <div class="card">
         <h2>Sua posição no triângulo</h2>
-        <p class="scale-legend">O ponto verde mostra onde você está em relação às três esferas. Quanto mais perto de um vértice, maior sua afinidade com aquela esfera.</p>
+        <p class="scale-legend">O ponto verde mostra onde você está em relação às três esferas.</p>
         
         <div class="triangle-container">
           <canvas id="triangle-canvas"></canvas>
@@ -250,32 +237,17 @@
         <div class="share-title">📤 Compartilhar meu resultado</div>
         
         <div class="share-buttons">
-          <button class="share-btn whatsapp" id="share-whatsapp">
-            <span>WhatsApp</span>
-          </button>
-          <button class="share-btn twitter" id="share-twitter">
-            <span>Twitter/X</span>
-          </button>
-          <button class="share-btn facebook" id="share-facebook">
-            <span>Facebook</span>
-          </button>
-          <button class="share-btn telegram" id="share-telegram">
-            <span>Telegram</span>
-          </button>
-          <button class="share-btn linkedin" id="share-linkedin">
-            <span>LinkedIn</span>
-          </button>
+          <button class="share-btn whatsapp" id="share-whatsapp">WhatsApp</button>
+          <button class="share-btn twitter" id="share-twitter">Twitter/X</button>
+          <button class="share-btn facebook" id="share-facebook">Facebook</button>
+          <button class="share-btn telegram" id="share-telegram">Telegram</button>
         </div>
         
         <div class="share-divider"><span>ou</span></div>
         
         <div class="share-buttons">
-          <button class="share-btn download" id="download-image">
-            <span>⬇️ Baixar imagem</span>
-          </button>
-          <button class="share-btn copy" id="copy-result">
-            <span>📋 Copiar texto</span>
-          </button>
+          <button class="share-btn download" id="download-image">⬇️ Baixar imagem</button>
+          <button class="share-btn copy" id="copy-result">📋 Copiar texto</button>
         </div>
       </div>
 
@@ -320,20 +292,20 @@
           </div>
         </div>
       </div>
-    </section>
 
-    <div id="admin-links" class="card" style="display:none;">
-      <h2>Administração</h2>
-      <div class="auth-links">
-        <a href="/admin-dashboard.html">Abrir painel do admin</a>
+      <!-- CTA to register -->
+      <div class="card" style="text-align:center;">
+        <h2>Gostou do resultado?</h2>
+        <p style="margin-bottom:16px;color:var(--text-secondary);">Crie uma conta para salvar seu resultado e refazer o teste quando quiser.</p>
+        <a href="/cadastro.html" class="button">Criar minha conta</a>
       </div>
-    </div>
+    </section>
   </main>
 
   <!-- Toast -->
   <div id="share-toast" class="share-toast">Copiado!</div>
 
-  <script type="module" src="/js/result.js"></script>
+  <script type="module" src="/js/result-guest.js"></script>
   <script src="/js/keep-alive.js"></script>
 </body>
 </html>

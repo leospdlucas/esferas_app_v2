@@ -34,6 +34,12 @@ export function normalizeAffinities(S_M, S_C, S_R) {
   let A_C = S_C + 10.0;
   let A_R = S_R + 10.0;
 
+  // Amplifica as diferenças com função exponencial
+  const exponent = 2.0;
+  A_M = Math.pow(A_M, exponent);
+  A_C = Math.pow(A_C, exponent);
+  A_R = Math.pow(A_R, exponent);
+
   const total = A_M + A_C + A_R;
   if (total === 0) return { w_M: 1/3, w_C: 1/3, w_R: 1/3 };
 
