@@ -1,9 +1,9 @@
 export const likertMap = {
-  "1": -3,
-  "2": -1,
+  "1": -10,
+  "2": -5,
   "3": 0,
-  "4": 1,
-  "5": 3
+  "4": 5,
+  "5": 10
 };
 
 export function shuffle(array) {
@@ -15,10 +15,10 @@ export function shuffle(array) {
 }
 
 export function interpretAxis(score) {
-  if (score >= 1.5) return "forte inclinação";
-  if (score >= 0.5) return "inclinação moderada";
-  if (score > -0.5) return "perfil neutro / oscilante";
-  if (score > -1.5) return "baixa afinidade";
+  if (score >= 5) return "forte inclinação";
+  if (score >= 2) return "inclinação moderada";
+  if (score > -2) return "perfil neutro / oscilante";
+  if (score > -5) return "baixa afinidade";
   return "rejeição forte";
 }
 
@@ -44,10 +44,10 @@ export function computeScores(questions, answersById) {
 }
 
 export function normalizeAffinities(S_M, S_C, S_R) {
-  // Scores vão de -3 a +3, então somamos 3 para ter valores de 0 a 6
-  let A_M = S_M + 3.0;
-  let A_C = S_C + 3.0;
-  let A_R = S_R + 3.0;
+  // Scores vão de -10 a +10, então somamos 10 para ter valores de 0 a 20
+  let A_M = S_M + 10.0;
+  let A_C = S_C + 10.0;
+  let A_R = S_R + 10.0;
 
   const total = A_M + A_C + A_R;
   if (total === 0) {
