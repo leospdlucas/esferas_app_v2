@@ -16,5 +16,8 @@
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "qrcode": "^1.5.4"
+  },
+  "overrides": {
+    "better-sqlite3": "$better-sqlite3"
   }
 }

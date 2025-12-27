@@ -2,7 +2,7 @@ services:
   - type: web
     name: dte-app
     runtime: node
-    buildCommand: npm install
+    buildCommand: npm install --build-from-source
     startCommand: npm start
     envVars:
       - key: JWT_SECRET
