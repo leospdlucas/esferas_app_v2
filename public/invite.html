@@ -9,19 +9,40 @@
 <body>
   <main class="container">
     <h1>DTE</h1>
-    <p class="brand-subtitle">Voce foi convidado!</p>
+    <p class="brand-subtitle">Você foi convidado!</p>
 
     <div class="card" style="text-align:center;">
       <p id="msg" style="font-size:1.1rem;">Validando convite...</p>
       <p class="scale-legend" style="margin-top:16px;">
-        Voce foi convidado para responder o Diagrama de Tendencia Esferal.
+        Você foi convidado para responder o Diagrama de Tendência Esferal.
       </p>
     </div>
 
+    <!-- Opção rápida: Convidado -->
+    <div class="card" id="guest-card" style="display:none;">
+      <h2>👤 Experimentar agora</h2>
+      <p class="scale-legend" style="margin-bottom:16px;">Responda sem criar conta. Rápido e fácil!</p>
+      
+      <form id="guest-form">
+        <div class="question-card">
+          <p class="question-text">Como quer ser chamado?</p>
+          <input id="guest-nickname" type="text" required minlength="2" maxlength="30" placeholder="Seu apelido" autocomplete="off"/>
+        </div>
+        <button type="submit">Começar questionário</button>
+      </form>
+      <p id="guest-msg" class="scale-legend" style="margin-top:12px;"></p>
+      <p class="scale-legend" style="margin-top:8px;color:var(--text-muted);">⚠️ Seu resultado não será salvo permanentemente.</p>
+    </div>
+
+    <div class="auth-divider" id="divider-1" style="display:none;"><span>ou</span></div>
+
+    <!-- Opções com conta -->
     <div class="card" id="actions-card" style="display:none;">
+      <h2>💾 Salvar meu resultado</h2>
+      <p class="scale-legend" style="margin-bottom:16px;">Crie uma conta para salvar e compartilhar seu resultado.</p>
       <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;">
-        <a id="btn-cadastro" href="/cadastro.html" class="button">Criar conta</a>
-        <a id="btn-login" href="/" class="button secondary">Ja tenho conta</a>
+        <a id="btn-cadastro" href="/cadastro.html" class="button alt">Criar conta</a>
+        <a id="btn-login" href="/" class="button secondary">Já tenho conta</a>
       </div>
     </div>
   </main>

@@ -1,4 +1,4 @@
-import { likertMap, shuffle, computeScores, normalizeAffinities } from "./scoring.js";
+import { likertMap } from "./scoring.js";
 
 const GUEST_KEY = "dte_guest_nickname";
 
@@ -85,9 +85,10 @@ function scrollToQuestion(qId) {
 
 async function loadQuestions() {
   try {
-    const response = await fetch("/data/questions.json");
+    // Carrega da API que já sorteia 10 de cada esfera
+    const response = await fetch("/api/questions-guest");
     const data = await response.json();
-    questions = shuffle([...data]);
+    questions = data; // Já vem embaralhado do servidor
     renderQuestions(questions);
     setMsg("status-msg", `0 de ${questions.length} respondidas`);
   } catch (err) {

@@ -51,102 +51,402 @@
   },
   {
     "id": 11,
+    "axis": "M",
+    "text": "Imigrantes ilegais deveriam ser deportados imediatamente, sem exceções. Por exemplo: não importa se a pessoa está há anos no país ou tem filhos aqui — entrou ilegalmente, tem que sair."
+  },
+  {
+    "id": 12,
+    "axis": "M",
+    "text": "O serviço militar obrigatório deveria ser mais rigoroso e extenso. Por exemplo: todo jovem deveria passar pelo menos 2 anos servindo, aprendendo disciplina, hierarquia e amor à pátria."
+  },
+  {
+    "id": 13,
+    "axis": "M",
+    "text": "Manifestações e protestos deveriam ter limites mais rígidos. Por exemplo: bloquear ruas, ocupar prédios públicos ou fazer greves que afetam serviços essenciais deveria dar cadeia."
+  },
+  {
+    "id": 14,
+    "axis": "M",
+    "text": "A polícia deveria ter permissão para usar força letal mais facilmente. Por exemplo: se um suspeito corre ou resiste à prisão, o policial deveria poder atirar sem medo de ser processado depois."
+  },
+  {
+    "id": 15,
+    "axis": "M",
+    "text": "Fronteiras nacionais são sagradas e devem ser protegidas a qualquer custo. Por exemplo: o Brasil deveria construir muros, aumentar patrulhas e usar tecnologia militar para impedir qualquer entrada ilegal."
+  },
+  {
+    "id": 16,
+    "axis": "M",
+    "text": "Cidadãos de bem deveriam ter direito irrestrito a portar armas. Por exemplo: qualquer pessoa sem ficha criminal deveria poder comprar e andar armada, pois isso reduz a criminalidade."
+  },
+  {
+    "id": 17,
+    "axis": "M",
+    "text": "A lealdade ao próprio país deve vir antes de qualquer ideologia ou causa global. Por exemplo: brasileiro tem que defender o Brasil primeiro, mesmo que isso signifique ir contra acordos internacionais ou ONGs estrangeiras."
+  },
+  {
+    "id": 18,
+    "axis": "M",
+    "text": "Escolas deveriam ensinar mais patriotismo e respeito às autoridades. Por exemplo: cantar o hino toda semana, estudar os heróis nacionais, e aprender a respeitar policiais e militares desde cedo."
+  },
+  {
+    "id": 19,
+    "axis": "M",
+    "text": "Grupos extremistas deveriam ser monitorados e infiltrados pela polícia. Por exemplo: organizações radicais de esquerda ou direita deveriam ter agentes disfarçados para prevenir ameaças antes que aconteçam."
+  },
+  {
+    "id": 20,
+    "axis": "M",
+    "text": "A pena de morte deveria existir para crimes hediondos. Por exemplo: estuprador de criança, assassino em série ou terrorista deveria ser executado — não faz sentido o Estado sustentar essa gente na cadeia."
+  },
+  {
+    "id": 21,
+    "axis": "M",
+    "text": "O governo deveria poder bloquear sites e redes sociais que ameacem a ordem pública. Por exemplo: se um site espalha fake news, incita violência ou organiza protestos ilegais, deveria ser derrubado sem precisar de ordem judicial demorada."
+  },
+  {
+    "id": 22,
+    "axis": "M",
+    "text": "Presídios deveriam ser mais duros, não mais confortáveis. Por exemplo: cadeia tem que ser lugar de sofrimento — sem TV, sem academia, sem visita íntima. Criminoso tem que pagar pelo que fez."
+  },
+  {
+    "id": 23,
+    "axis": "M",
+    "text": "Em caso de guerra ou ameaça externa, todos deveriam ser obrigados a contribuir. Por exemplo: se o Brasil for atacado, todo cidadão apto deveria ser convocado para lutar ou trabalhar na indústria de defesa, sem opção de recusar."
+  },
+  {
+    "id": 24,
+    "axis": "M",
+    "text": "A identidade nacional está sendo destruída pela globalização. Por exemplo: estamos perdendo nossa cultura, língua e valores brasileiros por causa de influências estrangeiras, redes sociais americanas e empresas multinacionais."
+  },
+  {
+    "id": 25,
+    "axis": "M",
+    "text": "Líderes fortes e decisivos são melhores que políticos que ficam negociando. Por exemplo: prefiro um presidente que toma decisões rápidas e firmes, mesmo que polêmicas, do que um que fica fazendo acordos e cedendo para todo lado."
+  },
+  {
+    "id": 26,
+    "axis": "M",
+    "text": "O respeito à bandeira, ao hino e aos símbolos nacionais deveria ser obrigatório por lei. Por exemplo: desrespeitar esses símbolos deveria dar multa ou até prisão, como acontece em outros países."
+  },
+  {
+    "id": 27,
+    "axis": "M",
+    "text": "A família tradicional é a base da nação e deve ser protegida pelo Estado. Por exemplo: o governo deveria dar incentivos fiscais para casamentos tradicionais e famílias com filhos, não para arranjos alternativos."
+  },
+  {
+    "id": 28,
+    "axis": "M",
+    "text": "Organizações internacionais como ONU e OEA interferem demais na soberania do Brasil. Por exemplo: esses órgãos vivem criticando o Brasil e querendo impor regras — deveríamos ignorá-los ou sair deles."
+  },
+  {
+    "id": 29,
+    "axis": "M",
+    "text": "A ordem e a disciplina são mais importantes que a criatividade e a liberdade individual. Por exemplo: uma sociedade organizada onde cada um sabe seu lugar funciona melhor do que uma onde todo mundo faz o que quer."
+  },
+  {
+    "id": 30,
+    "axis": "M",
+    "text": "Veteranos de guerra e policiais merecem status especial na sociedade. Por exemplo: quem arrisca a vida pela pátria deveria ter privilégios como aposentadoria maior, atendimento prioritário e reconhecimento público."
+  },
+  {
+    "id": 31,
     "axis": "C",
     "text": "O governo só atrapalha a economia — quanto menos interferência, melhor. Por exemplo: empresas deveriam poder contratar e demitir livremente, sem leis trabalhistas rígidas, e o mercado deveria definir preços, não o governo."
   },
   {
-    "id": 12,
+    "id": 32,
     "axis": "C",
     "text": "Quem arrisca tudo para empreender merece ficar rico. Por exemplo: se alguém largou emprego estável, investiu suas economias e trabalhou 16 horas por dia para criar uma empresa de sucesso, cada centavo do lucro é merecido."
   },
   {
-    "id": 13,
+    "id": 33,
     "axis": "C",
     "text": "Impostos altos são basicamente roubo legalizado. Por exemplo: é injusto o governo tirar 30-40% do meu salário para gastar com burocracia, políticos corruptos e programas sociais que sustentam quem não quer trabalhar."
   },
   {
-    "id": 14,
+    "id": 34,
     "axis": "C",
     "text": "Se você é pobre, em grande parte a responsabilidade é sua. Por exemplo: no Brasil existem histórias de pessoas que saíram da favela e ficaram ricas — quem se esforça de verdade, estuda e trabalha duro consegue vencer na vida."
   },
   {
-    "id": 15,
+    "id": 35,
     "axis": "C",
     "text": "O mercado livre resolve problemas melhor que o governo. Por exemplo: hospitais e escolas privadas funcionam melhor que públicos; Uber é melhor que táxi regulamentado; bancos digitais são melhores que estatais."
   },
   {
-    "id": 16,
+    "id": 36,
     "axis": "C",
     "text": "Cada pessoa é responsável pelo próprio sucesso ou fracasso. Por exemplo: ficar culpando \"o sistema\", o racismo, a falta de oportunidades ou a família pobre é desculpa de quem não quer se esforçar de verdade."
   },
   {
-    "id": 17,
+    "id": 37,
     "axis": "C",
     "text": "Não deveria existir limite para quanto uma pessoa pode enriquecer. Por exemplo: se Elon Musk ou Jeff Bezos conseguiram acumular 200 bilhões, é porque criaram valor — não cabe ao governo limitar ou taxar isso pesadamente."
   },
   {
-    "id": 18,
+    "id": 38,
     "axis": "C",
     "text": "Leis trabalhistas exageradas prejudicam mais do que ajudam. Por exemplo: a CLT engessa as empresas, encarece as contratações e protege funcionários ruins — seria melhor ter contratos mais flexíveis como nos EUA."
   },
   {
-    "id": 19,
+    "id": 39,
     "axis": "C",
     "text": "Bilionários são heróis que movem a economia. Por exemplo: sem empreendedores como Jorge Paulo Lemann, Luciano Hang ou Flávio Rocha, milhões de brasileiros não teriam emprego — deveríamos admirá-los, não criticá-los."
   },
   {
-    "id": 20,
+    "id": 40,
     "axis": "C",
     "text": "Políticos não entendem de economia e deveriam interferir menos. Por exemplo: decisões sobre juros, câmbio e investimentos deveriam ser tomadas por economistas e empresários, não por deputados que nunca administraram nada."
   },
   {
-    "id": 21,
+    "id": 41,
+    "axis": "C",
+    "text": "Privatizar estatais é sempre a melhor solução. Por exemplo: Correios, Petrobras, Banco do Brasil — todas essas empresas funcionariam melhor e dariam menos prejuízo se fossem vendidas para a iniciativa privada."
+  },
+  {
+    "id": 42,
+    "axis": "C",
+    "text": "Sindicatos são máfias que só atrapalham o trabalhador. Por exemplo: ficam fazendo greve por qualquer motivo, cobram contribuição obrigatória e os líderes enriquecem às custas dos trabalhadores de verdade."
+  },
+  {
+    "id": 43,
+    "axis": "C",
+    "text": "O salário mínimo deveria ser definido pelo mercado, não pelo governo. Por exemplo: se o governo obriga a pagar mais do que o trabalho vale, as empresas simplesmente não contratam ou vão para a informalidade."
+  },
+  {
+    "id": 44,
+    "axis": "C",
+    "text": "Programas de transferência de renda criam dependência e preguiça. Por exemplo: Bolsa Família e similares fazem as pessoas preferirem ficar em casa recebendo do governo a trabalhar e crescer por conta própria."
+  },
+  {
+    "id": 45,
+    "axis": "C",
+    "text": "A meritocracia é o sistema mais justo que existe. Por exemplo: quem estuda mais, trabalha mais e tem mais talento merece ganhar mais — não faz sentido nivelar todo mundo por baixo em nome da \"igualdade\"."
+  },
+  {
+    "id": 46,
+    "axis": "C",
+    "text": "Heranças não deveriam ser taxadas — o dinheiro já foi tributado uma vez. Por exemplo: se meu pai trabalhou a vida toda e pagou impostos, é injusto o governo querer ficar com parte do que ele deixou para mim."
+  },
+  {
+    "id": 47,
+    "axis": "C",
+    "text": "A concorrência sempre melhora produtos e serviços. Por exemplo: quando tem várias empresas competindo, os preços caem e a qualidade sobe — monopólios estatais só geram acomodação e serviço ruim."
+  },
+  {
+    "id": 48,
+    "axis": "C",
+    "text": "Regulamentações ambientais excessivas travam o desenvolvimento econômico. Por exemplo: o Brasil tem terras férteis e recursos naturais enormes, mas não pode usar por causa de regras ambientais criadas por ONGs estrangeiras."
+  },
+  {
+    "id": 49,
+    "axis": "C",
+    "text": "A educação deveria ser um investimento pessoal, não uma obrigação do Estado. Por exemplo: quem quer estudar que pague ou busque bolsas — não é justo quem não fez faculdade sustentar a universidade dos outros."
+  },
+  {
+    "id": 50,
+    "axis": "C",
+    "text": "Empreendedores assumem riscos que funcionários não assumem, por isso merecem ganhar muito mais. Por exemplo: se a empresa quebra, o dono perde tudo enquanto o funcionário só perde o emprego e ainda recebe rescisão."
+  },
+  {
+    "id": 51,
+    "axis": "C",
+    "text": "A desigualdade é natural e até necessária para o progresso. Por exemplo: se todo mundo ganhasse igual, ninguém teria incentivo para se esforçar mais, inovar ou assumir riscos."
+  },
+  {
+    "id": 52,
+    "axis": "C",
+    "text": "Planos de saúde e aposentadoria privados são melhores que os públicos. Por exemplo: quem pode pagar deveria sair do SUS e do INSS — sobraria mais recursos para quem realmente precisa e o serviço seria melhor para todos."
+  },
+  {
+    "id": 53,
+    "axis": "C",
+    "text": "O lucro é o melhor indicador de que uma empresa está fazendo algo certo. Por exemplo: se uma empresa dá lucro, é porque está entregando algo que as pessoas querem e pagam — é assim que a sociedade progride."
+  },
+  {
+    "id": 54,
+    "axis": "C",
+    "text": "Países ricos ficaram ricos por mérito, não por exploração. Por exemplo: EUA, Japão e Alemanha são ricos porque têm cultura de trabalho duro, inovação e educação — não porque \"roubaram\" de outros países."
+  },
+  {
+    "id": 55,
+    "axis": "C",
+    "text": "O livre comércio internacional beneficia a todos. Por exemplo: quando países comerciam livremente, cada um produz o que faz melhor e todos têm acesso a produtos melhores e mais baratos."
+  },
+  {
+    "id": 56,
+    "axis": "C",
+    "text": "Startups e empresas de tecnologia mostram que qualquer um pode ficar rico com uma boa ideia. Por exemplo: Mark Zuckerberg criou o Facebook no quarto da faculdade — oportunidade existe para quem tem coragem e criatividade."
+  },
+  {
+    "id": 57,
+    "axis": "C",
+    "text": "O Estado deveria funcionar como uma empresa: enxuto, eficiente e focado em resultados. Por exemplo: cortar gastos, demitir funcionários improdutivos, terceirizar serviços — assim como qualquer empresa bem administrada faria."
+  },
+  {
+    "id": 58,
+    "axis": "C",
+    "text": "A caridade privada é mais eficiente que programas sociais do governo. Por exemplo: quando você doa diretamente para uma instituição, o dinheiro chega em quem precisa — quando passa pelo governo, boa parte some em corrupção e burocracia."
+  },
+  {
+    "id": 59,
+    "axis": "C",
+    "text": "Pessoas ricas que doam para causas sociais fazem mais bem do que qualquer imposto. Por exemplo: Bill Gates com sua fundação salvou mais vidas com vacinas do que muitos governos — isso mostra o poder da filantropia privada."
+  },
+  {
+    "id": 60,
+    "axis": "C",
+    "text": "O fracasso de negócios faz parte do aprendizado e não deve ser punido. Por exemplo: muitos empreendedores de sucesso faliram várias vezes antes de acertar — leis que protegem demais contra falência impedem que as pessoas arrisquem."
+  },
+  {
+    "id": 61,
     "axis": "R",
     "text": "Sem Deus ou alguma fé, a vida não tem sentido verdadeiro. Por exemplo: ateus podem até ser felizes, mas no fundo vivem um vazio existencial — só a espiritualidade pode dar propósito real à existência humana."
   },
   {
-    "id": 22,
+    "id": 62,
     "axis": "R",
     "text": "Existe uma lei moral superior às leis humanas. Por exemplo: mesmo que o aborto ou a eutanásia sejam legalizados, continuam sendo errados aos olhos de Deus — a lei divina vale mais que a lei dos homens."
   },
   {
-    "id": 23,
+    "id": 63,
     "axis": "R",
     "text": "A sabedoria das tradições religiosas vale mais que as modas modernas. Por exemplo: o casamento tradicional, a família com pai e mãe, e os valores cristãos funcionaram por 2.000 anos — não deveríamos abandoná-los por ideias novas."
   },
   {
-    "id": 24,
+    "id": 64,
     "axis": "R",
     "text": "Quem cultiva a espiritualidade tem uma paz que o materialismo não dá. Por exemplo: pessoas que oram, meditam ou frequentam sua igreja/templo regularmente são mais equilibradas e felizes do que quem só busca dinheiro e prazer."
   },
   {
-    "id": 25,
+    "id": 65,
     "axis": "R",
     "text": "O relativismo moral está destruindo a sociedade. Por exemplo: quando dizemos que \"cada um tem sua verdade\" e que não existe certo ou errado absoluto, abrimos a porta para todo tipo de degeneração e decadência."
   },
   {
-    "id": 26,
+    "id": 66,
     "axis": "R",
     "text": "Famílias que praticam sua fé juntas são mais unidas e fortes. Por exemplo: ir à missa/culto todo domingo, orar antes das refeições e ensinar valores religiosos aos filhos cria um lar mais estável e crianças mais bem-educadas."
   },
   {
-    "id": 27,
+    "id": 67,
     "axis": "R",
     "text": "Por mais sucesso material que alguém tenha, sem fé sempre faltará algo. Por exemplo: celebridades ricas que se suicidam ou caem em depressão provam que dinheiro e fama não preenchem o vazio que só Deus pode preencher."
   },
   {
-    "id": 28,
+    "id": 68,
     "axis": "R",
     "text": "Nos momentos mais difíceis da vida, só a fé sustenta de verdade. Por exemplo: quando alguém perde um filho, recebe um diagnóstico terminal ou enfrenta uma tragédia, a comunidade religiosa e a crença em algo maior são o que salvam."
   },
   {
-    "id": 29,
+    "id": 69,
     "axis": "R",
     "text": "Experiências espirituais como milagres e orações atendidas são absolutamente reais. Por exemplo: conheço pessoas que foram curadas após orações, que tiveram visões ou sonhos proféticos — quem nega nunca experimentou o poder de Deus."
   },
   {
-    "id": 30,
+    "id": 70,
     "axis": "R",
     "text": "Os valores espirituais protegem contra os vícios e tentações do mundo moderno. Por exemplo: jovens que crescem na igreja têm menos chance de se envolver com drogas, promiscuidade ou criminalidade do que jovens sem religião."
+  },
+  {
+    "id": 71,
+    "axis": "R",
+    "text": "A ciência não consegue explicar tudo — há mistérios que só a fé alcança. Por exemplo: de onde veio o universo? Por que existe algo em vez de nada? O que acontece após a morte? A ciência não tem respostas, mas a religião tem."
+  },
+  {
+    "id": 72,
+    "axis": "R",
+    "text": "A sociedade era melhor quando a religião tinha mais influência. Por exemplo: antigamente havia mais respeito, menos violência, famílias mais estáveis — a secularização trouxe progresso material mas decadência moral."
+  },
+  {
+    "id": 73,
+    "axis": "R",
+    "text": "A fé dá força para superar qualquer adversidade. Por exemplo: pessoas com fé forte enfrentam doenças, perdas e dificuldades com mais coragem e esperança do que quem não acredita em nada."
+  },
+  {
+    "id": 74,
+    "axis": "R",
+    "text": "Educação moral e religiosa deveria fazer parte do currículo escolar. Por exemplo: além de matemática e português, crianças deveriam aprender valores éticos, história das religiões e a importância da espiritualidade."
+  },
+  {
+    "id": 75,
+    "axis": "R",
+    "text": "O casamento é uma instituição sagrada, não apenas um contrato legal. Por exemplo: é uma união abençoada por Deus que deve ser levada a sério — divórcio fácil e casamentos descartáveis enfraquecem essa instituição."
+  },
+  {
+    "id": 76,
+    "axis": "R",
+    "text": "A vida humana é sagrada desde a concepção até a morte natural. Por exemplo: aborto, eutanásia e suicídio assistido são errados porque não cabe ao ser humano decidir quando uma vida começa ou termina — isso é papel de Deus."
+  },
+  {
+    "id": 77,
+    "axis": "R",
+    "text": "A gratidão e a humildade são virtudes mais importantes que o sucesso pessoal. Por exemplo: uma pessoa humilde e grata, mesmo pobre, vive melhor e mais feliz do que uma pessoa orgulhosa e ambiciosa que conquista tudo."
+  },
+  {
+    "id": 78,
+    "axis": "R",
+    "text": "Comunidades religiosas oferecem um senso de pertencimento que redes sociais nunca darão. Por exemplo: numa igreja você encontra apoio real, amizades verdadeiras e pessoas que se importam — online tudo é superficial."
+  },
+  {
+    "id": 79,
+    "axis": "R",
+    "text": "O perdão é mais poderoso que a vingança ou a justiça humana. Por exemplo: guardar rancor só faz mal a você mesmo — perdoar, mesmo quem te fez muito mal, liberta a alma e traz paz interior."
+  },
+  {
+    "id": 80,
+    "axis": "R",
+    "text": "A natureza é uma criação divina que devemos cuidar com reverência. Por exemplo: a perfeição dos ecossistemas, a beleza das paisagens e a complexidade da vida são provas de uma inteligência criadora — não surgiram por acaso."
+  },
+  {
+    "id": 81,
+    "axis": "R",
+    "text": "Práticas espirituais como meditação e oração melhoram a saúde mental comprovadamente. Por exemplo: estudos mostram que pessoas religiosas têm menos ansiedade, depressão e estresse — a ciência está confirmando o que a fé já sabia."
+  },
+  {
+    "id": 82,
+    "axis": "R",
+    "text": "A morte não é o fim, mas uma passagem para outra existência. Por exemplo: acreditar em vida após a morte dá conforto, tira o medo e nos faz viver melhor, pensando nas consequências eternas de nossos atos."
+  },
+  {
+    "id": 83,
+    "axis": "R",
+    "text": "Os Dez Mandamentos são a base de qualquer sociedade civilizada. Por exemplo: não matar, não roubar, não mentir, honrar pai e mãe — esses princípios são universais e deveriam guiar as leis de todos os países."
+  },
+  {
+    "id": 84,
+    "axis": "R",
+    "text": "A fé me ajuda a aceitar o que não posso mudar. Por exemplo: quando algo ruim acontece, entender que faz parte de um plano maior me dá paz — é melhor do que ficar revoltado questionando \"por quê?\"."
+  },
+  {
+    "id": 85,
+    "axis": "R",
+    "text": "O amor ao próximo é o mandamento mais importante de todos. Por exemplo: ajudar quem precisa, ser generoso e compassivo — essas são as verdadeiras marcas de uma pessoa boa, mais do que qualquer sucesso material."
+  },
+  {
+    "id": 86,
+    "axis": "R",
+    "text": "A modéstia e a simplicidade são virtudes esquecidas no mundo moderno. Por exemplo: a cultura de ostentação, selfies e busca de fama vai contra os valores espirituais de humildade que deveríamos cultivar."
+  },
+  {
+    "id": 87,
+    "axis": "R",
+    "text": "Líderes religiosos têm uma sabedoria especial para orientar as pessoas. Por exemplo: padres, pastores, rabinos e monges dedicam suas vidas ao estudo espiritual — seus conselhos valem mais que os de psicólogos ou coaches."
+  },
+  {
+    "id": 88,
+    "axis": "R",
+    "text": "Rituais e celebrações religiosas dão ritmo e significado à vida. Por exemplo: Natal, Páscoa, Ramadã, Yom Kipur — essas datas nos conectam com algo maior e criam memórias preciosas em família."
+  },
+  {
+    "id": 89,
+    "axis": "R",
+    "text": "A consciência é a voz de Deus dentro de nós. Por exemplo: aquele sentimento de culpa quando fazemos algo errado ou de paz quando fazemos o certo — isso é nosso guia espiritual interno nos orientando."
+  },
+  {
+    "id": 90,
+    "axis": "R",
+    "text": "A busca espiritual é o que diferencia humanos de animais. Por exemplo: somos os únicos seres que questionamos o sentido da vida, contemplamos o infinito e buscamos transcendência — isso não pode ser acidente evolutivo."
   }
 ]

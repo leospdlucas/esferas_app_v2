@@ -297,15 +297,39 @@ app.get("/api/me", authRequired, (req, res) => {
   res.json(req.user);
 });
 
-// Questions (shuffled)
+// Helper: sorteia N perguntas de cada esfera
+function selectBalancedQuestions(allQuestions, perAxis = 10) {
+  const byAxis = { M: [], C: [], R: [] };
+  
+  // Agrupa por esfera
+  for (const q of allQuestions) {
+    if (byAxis[q.axis]) {
+      byAxis[q.axis].push(q);
+    }
+  }
+  
+  // Embaralha cada grupo e pega N de cada
+  const selected = [];
+  for (const axis of ['M', 'C', 'R']) {
+    const shuffled = shuffle(byAxis[axis]);
+    selected.push(...shuffled.slice(0, perAxis));
+  }
+  
+  // Embaralha o resultado final
+  return shuffle(selected);
+}
+
+// Questions (shuffled, 10 per axis = 30 total)
 app.get("/api/questions", authRequired, (req, res) => {
-  const payload = shuffle(questions).map(q => ({ id: q.id, text: q.text }));
+  const selected = selectBalancedQuestions(questions, 10);
+  const payload = selected.map(q => ({ id: q.id, text: q.text }));
   res.json(payload);
 });
 
 // Questions for guests (no auth required)
 app.get("/api/questions-guest", (req, res) => {
-  const payload = shuffle(questions).map(q => ({ id: q.id, text: q.text }));
+  const selected = selectBalancedQuestions(questions, 10);
+  const payload = selected.map(q => ({ id: q.id, text: q.text }));
   res.json(payload);
 });
 
@@ -316,10 +340,25 @@ app.post("/api/submit", authRequired, (req, res) => {
     return res.status(400).json({ error: "Formato inválido de respostas." });
   }
 
-  const { ok, missing } = validateAnswers(questions, answersById);
-  if (!ok) return res.status(400).json({ error: `Respostas incompletas/inválidas.` });
+  // Filtra apenas as perguntas que foram respondidas
+  const answeredIds = Object.keys(answersById).map(id => parseInt(id));
+  const answeredQuestions = questions.filter(q => answeredIds.includes(q.id));
+  
+  // Valida se tem pelo menos 30 respostas (10 por esfera)
+  if (answeredQuestions.length < 30) {
+    return res.status(400).json({ error: `Respostas incompletas. Esperado 30, recebido ${answeredQuestions.length}.` });
+  }
+  
+  // Valida se os valores são válidos
+  const validValues = [-10, -5, 0, 5, 10];
+  for (const q of answeredQuestions) {
+    const v = answersById[String(q.id)];
+    if (typeof v !== "number" || !validValues.includes(v)) {
+      return res.status(400).json({ error: `Valor inválido para pergunta ${q.id}.` });
+    }
+  }
 
-  const { S_M, S_C, S_R } = computeScores(questions, answersById);
+  const { S_M, S_C, S_R } = computeScores(answeredQuestions, answersById);
   const { w_M, w_C, w_R } = normalizeAffinities(S_M, S_C, S_R);
   const { x, y } = computeTriangleCoords(w_M, w_C, w_R);
 
@@ -349,10 +388,25 @@ app.post("/api/submit-guest", (req, res) => {
     return res.status(400).json({ error: "Formato inválido de respostas." });
   }
 
-  const { ok, missing } = validateAnswers(questions, answersById);
-  if (!ok) return res.status(400).json({ error: `Respostas incompletas/inválidas.` });
+  // Filtra apenas as perguntas que foram respondidas
+  const answeredIds = Object.keys(answersById).map(id => parseInt(id));
+  const answeredQuestions = questions.filter(q => answeredIds.includes(q.id));
+  
+  // Valida se tem pelo menos 30 respostas
+  if (answeredQuestions.length < 30) {
+    return res.status(400).json({ error: `Respostas incompletas. Esperado 30, recebido ${answeredQuestions.length}.` });
+  }
+  
+  // Valida se os valores são válidos
+  const validValues = [-10, -5, 0, 5, 10];
+  for (const q of answeredQuestions) {
+    const v = answersById[String(q.id)];
+    if (typeof v !== "number" || !validValues.includes(v)) {
+      return res.status(400).json({ error: `Valor inválido para pergunta ${q.id}.` });
+    }
+  }
 
-  const { S_M, S_C, S_R } = computeScores(questions, answersById);
+  const { S_M, S_C, S_R } = computeScores(answeredQuestions, answersById);
   const { w_M, w_C, w_R } = normalizeAffinities(S_M, S_C, S_R);
   const { x, y } = computeTriangleCoords(w_M, w_C, w_R);
 
