@@ -165,6 +165,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const data = JSON.parse(storedResult);
 
+  // Exibir o apelido
+  if (data.nickname) {
+    const nameEl = document.getElementById("guest-name");
+    if (nameEl) {
+      nameEl.textContent = data.nickname;
+    }
+  }
+
   const S_M = Number(data.S_M);
   const S_C = Number(data.S_C);
   const S_R = Number(data.S_R);

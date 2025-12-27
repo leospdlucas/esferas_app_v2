@@ -1,6 +1,7 @@
 import { apiFetch, setToken, getToken, clearToken } from "./auth.js";
 
 const INVITE_KEY = "dte_invite_code";
+const GUEST_KEY = "dte_guest_nickname";
 
 function setMsg(id, text, isError = false) {
   const el = document.getElementById(id);
@@ -60,6 +61,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
+  // Login form
   const loginForm = document.getElementById("login-form");
   if (loginForm) {
     loginForm.addEventListener("submit", async (e) => {
@@ -88,6 +90,33 @@ document.addEventListener("DOMContentLoaded", async () => {
         submitBtn.disabled = false;
         submitBtn.textContent = "Entrar";
       }
+    });
+  }
+
+  // Guest form
+  const guestForm = document.getElementById("guest-form");
+  if (guestForm) {
+    guestForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      setMsg("guest-msg", "");
+      
+      const nickname = document.getElementById("guest-nickname").value.trim();
+      
+      if (!nickname || nickname.length < 2) {
+        setMsg("guest-msg", "Digite um apelido com pelo menos 2 caracteres.", true);
+        return;
+      }
+      
+      if (nickname.length > 30) {
+        setMsg("guest-msg", "O apelido deve ter no máximo 30 caracteres.", true);
+        return;
+      }
+      
+      // Salva o apelido no sessionStorage
+      sessionStorage.setItem(GUEST_KEY, nickname);
+      
+      // Redireciona para o quiz de convidado
+      window.location.href = "/quiz-guest.html";
     });
   }
 });

@@ -44,10 +44,18 @@
 
     <div class="auth-divider"><span>ou</span></div>
 
-    <div class="card" style="text-align:center;">
-      <p style="margin-bottom:8px;color:var(--text-secondary);">Quer apenas experimentar?</p>
-      <p class="scale-legend" style="margin-bottom:16px;">Responda como convidado (seu resultado não será salvo)</p>
-      <a href="/quiz-guest.html" class="button secondary" id="link-guest">Entrar como convidado</a>
+    <div class="card">
+      <h2>👤 Entrar como convidado</h2>
+      <p class="scale-legend" style="margin-bottom:16px;">Experimente o questionário sem criar conta. Seu resultado não será salvo permanentemente.</p>
+      
+      <form id="guest-form">
+        <div class="question-card">
+          <p class="question-text">Como quer ser chamado?</p>
+          <input id="guest-nickname" type="text" required minlength="2" maxlength="30" placeholder="Seu apelido" autocomplete="off"/>
+        </div>
+        <button type="submit" class="secondary">Continuar como convidado</button>
+      </form>
+      <p id="guest-msg" class="scale-legend" style="margin-top:12px;"></p>
     </div>
   </main>
 

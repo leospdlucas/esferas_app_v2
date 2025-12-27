@@ -1,6 +1,9 @@
 import { likertMap, shuffle, computeScores, normalizeAffinities } from "./scoring.js";
 
+const GUEST_KEY = "dte_guest_nickname";
+
 let questions = [];
+let guestNickname = "";
 
 function setMsg(id, text, isError = false) {
   const el = document.getElementById(id);
@@ -93,6 +96,21 @@ async function loadQuestions() {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
+  // Verificar se tem apelido
+  guestNickname = sessionStorage.getItem(GUEST_KEY);
+  
+  if (!guestNickname) {
+    // Sem apelido, redireciona para a página inicial
+    window.location.href = "/";
+    return;
+  }
+  
+  // Exibir o apelido
+  const nameEl = document.getElementById("guest-name");
+  if (nameEl) {
+    nameEl.textContent = guestNickname;
+  }
+  
   await loadQuestions();
 
   document.getElementById("submit-btn").addEventListener("click", () => {
@@ -113,6 +131,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const resultData = {
       S_M, S_C, S_R,
       w_M, w_C, w_R,
+      nickname: guestNickname,
       created_at: new Date().toISOString(),
       isGuest: true
     };
