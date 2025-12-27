@@ -1,4 +1,4 @@
-import { apiFetch, setToken, getToken } from "./auth.js";
+import { apiFetch, setToken, getToken, clearToken } from "./auth.js";
 
 const INVITE_KEY = "dte_invite_code";
 
@@ -42,13 +42,21 @@ document.addEventListener("DOMContentLoaded", async () => {
   
   preserveInviteInLink();
 
-  // Se já tem token válido, redireciona
+  // Se já tem token, valida no servidor antes de redirecionar
   if (getToken()) {
     try {
-      await apiFetch("/api/me");
-      return goNext();
+      const me = await apiFetch("/api/me");
+      // Token válido, redireciona
+      if (me.role === "admin") {
+        window.location.href = "/admin-dashboard.html";
+      } else {
+        window.location.href = "/quiz.html";
+      }
+      return;
     } catch {
-      // Token inválido, continua na página
+      // Token inválido ou expirado, limpa e continua na página de login
+      clearToken();
+      console.log("Token inválido, limpando...");
     }
   }
 

@@ -29,9 +29,10 @@ export function computeScores(questions, answersById) {
 }
 
 export function normalizeAffinities(S_M, S_C, S_R) {
-  let A_M = S_M + 1.0;
-  let A_C = S_C + 1.0;
-  let A_R = S_R + 1.0;
+  // Scores vão de -3 a +3, então somamos 3 para ter valores de 0 a 6
+  let A_M = S_M + 3.0;
+  let A_C = S_C + 3.0;
+  let A_R = S_R + 3.0;
 
   const total = A_M + A_C + A_R;
   if (total === 0) return { w_M: 1/3, w_C: 1/3, w_R: 1/3 };
@@ -49,12 +50,13 @@ export function computeTriangleCoords(w_M, w_C, w_R) {
 }
 
 export function validateAnswers(questions, answersById) {
-  // Ensure every question answered and values are finite numbers in [-1,1] with step 0.5
+  // Ensure every question answered and values are finite numbers in [-3, 3]
+  const validValues = [-3, -1, 0, 1, 3];
   const missing = [];
   for (const q of questions) {
     const v = answersById[String(q.id)];
     if (typeof v !== "number" || !Number.isFinite(v)) missing.push(q.id);
-    else if (v < -1 || v > 1) missing.push(q.id);
+    else if (!validValues.includes(v)) missing.push(q.id);
   }
   return { ok: missing.length === 0, missing };
 }
