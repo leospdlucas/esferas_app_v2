@@ -120,82 +120,30 @@
       font-weight: 600;
       margin-bottom: 8px;
     }
-    /* Share section */
-    .share-section {
-      text-align: center;
-      padding: 24px;
-      background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(99, 102, 241, 0.1));
-      border: 1px solid var(--accent-tertiary);
+    .cta-card {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.1));
+      border: 1px solid var(--accent-success);
       border-radius: 16px;
+      padding: 24px;
+      text-align: center;
     }
-    .share-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1rem;
-      margin-bottom: 16px;
-      color: var(--accent-tertiary);
+    .cta-card h2 {
+      color: var(--accent-success);
+      margin-bottom: 12px;
     }
-    .share-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 16px;
+    .cta-benefits {
+      text-align: left;
+      max-width: 300px;
+      margin: 16px auto;
     }
-    .share-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 20px !important;
-      border-radius: 12px !important;
-      font-size: 0.9rem !important;
-      font-weight: 600 !important;
-      min-width: 130px;
-      width: auto !important;
-      transition: all 0.3s ease !important;
+    .cta-benefits li {
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      list-style: none;
     }
-    .share-btn:hover {
-      transform: translateY(-2px) !important;
-    }
-    .share-btn.whatsapp { background: #25D366 !important; color: white !important; }
-    .share-btn.twitter { background: #1DA1F2 !important; color: white !important; }
-    .share-btn.facebook { background: #1877F2 !important; color: white !important; }
-    .share-btn.telegram { background: #0088cc !important; color: white !important; }
-    .share-btn.download { background: var(--gradient-primary) !important; color: white !important; }
-    .share-btn.copy { background: rgba(99, 102, 241, 0.2) !important; border: 1px solid var(--accent-primary) !important; color: var(--accent-primary) !important; }
-    .share-divider {
-      display: flex;
-      align-items: center;
-      margin: 16px 0;
-      color: var(--text-muted);
-      font-size: 0.8rem;
-    }
-    .share-divider::before,
-    .share-divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border-color);
-    }
-    .share-divider span {
-      padding: 0 12px;
-    }
-    .share-toast {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--accent-success);
-      color: white;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-weight: 600;
-      opacity: 0;
-      transition: opacity 0.3s;
-      z-index: 1000;
-    }
-    .share-toast.show {
-      opacity: 1;
+    .cta-benefits li::before {
+      content: "✓ ";
+      color: var(--accent-success);
     }
   </style>
 </head>
@@ -207,7 +155,7 @@
     <!-- Guest banner -->
     <div class="guest-banner">
       <div class="guest-banner-title">👤 Olá, <span id="guest-name">Convidado</span>!</div>
-      <p class="scale-legend" style="margin:0;">Este resultado é temporário e não foi salvo. <a href="/cadastro.html">Crie uma conta</a> para salvar.</p>
+      <p class="scale-legend" style="margin:0;">Este é seu resultado. Crie uma conta para salvar e compartilhar!</p>
     </div>
 
     <section id="results" class="results visible">
@@ -229,25 +177,6 @@
         
         <div style="text-align:center;margin-top:16px;">
           <span class="legend-item"><span class="legend-dot" style="background:#10b981;"></span> Sua posição</span>
-        </div>
-      </div>
-
-      <!-- Share section -->
-      <div class="card share-section">
-        <div class="share-title">📤 Compartilhar meu resultado</div>
-        
-        <div class="share-buttons">
-          <button class="share-btn whatsapp" id="share-whatsapp">WhatsApp</button>
-          <button class="share-btn twitter" id="share-twitter">Twitter/X</button>
-          <button class="share-btn facebook" id="share-facebook">Facebook</button>
-          <button class="share-btn telegram" id="share-telegram">Telegram</button>
-        </div>
-        
-        <div class="share-divider"><span>ou</span></div>
-        
-        <div class="share-buttons">
-          <button class="share-btn download" id="download-image">⬇️ Baixar imagem</button>
-          <button class="share-btn copy" id="copy-result">📋 Copiar texto</button>
         </div>
       </div>
 
@@ -294,16 +223,20 @@
       </div>
 
       <!-- CTA to register -->
-      <div class="card" style="text-align:center;">
-        <h2>Gostou do resultado?</h2>
-        <p style="margin-bottom:16px;color:var(--text-secondary);">Crie uma conta para salvar seu resultado e refazer o teste quando quiser.</p>
-        <a href="/cadastro.html" class="button">Criar minha conta</a>
+      <div class="cta-card">
+        <h2>🎉 Gostou do resultado?</h2>
+        <p style="color:var(--text-secondary);">Crie uma conta gratuita para:</p>
+        <ul class="cta-benefits">
+          <li>Salvar seu resultado permanentemente</li>
+          <li>Compartilhar nas redes sociais</li>
+          <li>Refazer o teste quando quiser</li>
+          <li>Comparar com outros usuários</li>
+        </ul>
+        <a href="/cadastro.html" class="button" style="margin-top:8px;">Criar minha conta grátis</a>
+        <p class="scale-legend" style="margin-top:16px;"><a href="/">Voltar ao início</a></p>
       </div>
     </section>
   </main>
-
-  <!-- Toast -->
-  <div id="share-toast" class="share-toast">Copiado!</div>
 
   <script type="module" src="/js/result-guest.js"></script>
   <script src="/js/keep-alive.js"></script>

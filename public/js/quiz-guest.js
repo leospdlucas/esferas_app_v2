@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   
   await loadQuestions();
 
-  document.getElementById("submit-btn").addEventListener("click", () => {
+  document.getElementById("submit-btn").addEventListener("click", async () => {
     const unansweredId = findFirstUnanswered();
     if (unansweredId) {
       setMsg("submit-msg", "Responda todas as perguntas antes de continuar.", true);
@@ -121,24 +121,48 @@ document.addEventListener("DOMContentLoaded", async () => {
       return;
     }
 
+    const btn = document.getElementById("submit-btn");
+    btn.disabled = true;
+    btn.textContent = "Enviando...";
+
     const answersById = collectAnswers();
     
-    // Compute scores locally
-    const { S_M, S_C, S_R } = computeScores(questions, answersById);
-    const { w_M, w_C, w_R } = normalizeAffinities(S_M, S_C, S_R);
-    
-    // Store in sessionStorage for result page
-    const resultData = {
-      S_M, S_C, S_R,
-      w_M, w_C, w_R,
-      nickname: guestNickname,
-      created_at: new Date().toISOString(),
-      isGuest: true
-    };
-    
-    sessionStorage.setItem("dte_guest_result", JSON.stringify(resultData));
-    
-    // Redirect to guest result page
-    window.location.href = "/result-guest.html";
+    try {
+      // Envia para o servidor salvar
+      const response = await fetch("/api/submit-guest", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nickname: guestNickname, answersById })
+      });
+      
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || "Erro ao enviar");
+      }
+      
+      // Store in sessionStorage for result page
+      const resultData = {
+        S_M: data.S_M,
+        S_C: data.S_C,
+        S_R: data.S_R,
+        w_M: data.w_M,
+        w_C: data.w_C,
+        w_R: data.w_R,
+        nickname: guestNickname,
+        created_at: new Date().toISOString(),
+        isGuest: true
+      };
+      
+      sessionStorage.setItem("dte_guest_result", JSON.stringify(resultData));
+      
+      // Redirect to guest result page
+      window.location.href = "/result-guest.html";
+      
+    } catch (err) {
+      setMsg("submit-msg", "Erro: " + err.message, true);
+      btn.disabled = false;
+      btn.textContent = "Ver meu resultado";
+    }
   });
 });

@@ -147,6 +147,24 @@ export function migrate() {
 
   db.run(`CREATE INDEX IF NOT EXISTS idx_submissions_user_id ON submissions(user_id)`);
 
+  // Tabela para respostas de convidados
+  db.run(`
+    CREATE TABLE IF NOT EXISTS guest_submissions (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      nickname TEXT NOT NULL,
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      answers_json TEXT NOT NULL,
+      S_M REAL NOT NULL,
+      S_C REAL NOT NULL,
+      S_R REAL NOT NULL,
+      w_M REAL NOT NULL,
+      w_C REAL NOT NULL,
+      w_R REAL NOT NULL,
+      x REAL NOT NULL,
+      y REAL NOT NULL
+    )
+  `);
+
   saveDatabase();
   console.log("Database migration completed");
 }

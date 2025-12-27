@@ -168,6 +168,10 @@
           <div class="stat-label">Respostas</div>
         </div>
         <div class="stat-box">
+          <div class="stat-value" id="stat-guests">--</div>
+          <div class="stat-label">Convidados</div>
+        </div>
+        <div class="stat-box">
           <div class="stat-value" id="stat-invites">--</div>
           <div class="stat-label">Convites</div>
         </div>
@@ -186,10 +190,11 @@
       <div class="preset-queries">
         <button class="preset-btn" data-query="SELECT id, name, email, role, created_at FROM users ORDER BY created_at DESC LIMIT 50">Usuários</button>
         <button class="preset-btn" data-query="SELECT u.name, u.email, s.S_M, s.S_C, s.S_R, s.created_at FROM submissions s JOIN users u ON s.user_id = u.id ORDER BY s.created_at DESC LIMIT 50">Respostas</button>
+        <button class="preset-btn" data-query="SELECT id, nickname, S_M, S_C, S_R, w_M, w_C, w_R, created_at FROM guest_submissions ORDER BY created_at DESC LIMIT 50">Convidados</button>
         <button class="preset-btn" data-query="SELECT code, uses, max_uses, expires_at, created_at FROM invites ORDER BY created_at DESC LIMIT 50">Convites</button>
-        <button class="preset-btn" data-query="SELECT role, COUNT(*) as total FROM users GROUP BY role">Por role</button>
-        <button class="preset-btn" data-query="SELECT DATE(created_at) as dia, COUNT(*) as total FROM users GROUP BY DATE(created_at) ORDER BY dia DESC LIMIT 30">Cadastros/dia</button>
-        <button class="preset-btn" data-query="SELECT AVG(S_M) as media_M, AVG(S_C) as media_C, AVG(S_R) as media_R FROM submissions">Médias</button>
+        <button class="preset-btn" data-query="SELECT DATE(created_at) as dia, COUNT(*) as total FROM guest_submissions GROUP BY DATE(created_at) ORDER BY dia DESC LIMIT 30">Convidados/dia</button>
+        <button class="preset-btn" data-query="SELECT AVG(S_M) as media_M, AVG(S_C) as media_C, AVG(S_R) as media_R FROM submissions">Médias usuários</button>
+        <button class="preset-btn" data-query="SELECT AVG(S_M) as media_M, AVG(S_C) as media_C, AVG(S_R) as media_R FROM guest_submissions">Médias convidados</button>
       </div>
 
       <textarea id="sql-input" class="sql-editor" placeholder="Digite sua consulta SQL aqui...

@@ -119,6 +119,7 @@ async function loadStats() {
     const stats = await apiFetch("/api/admin/db-stats");
     document.getElementById("stat-users").textContent = stats.users || 0;
     document.getElementById("stat-submissions").textContent = stats.submissions || 0;
+    document.getElementById("stat-guests").textContent = stats.guests || 0;
     document.getElementById("stat-invites").textContent = stats.invites || 0;
     document.getElementById("stat-today").textContent = stats.today || 0;
   } catch (err) {

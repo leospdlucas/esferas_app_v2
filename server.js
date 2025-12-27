@@ -303,6 +303,12 @@ app.get("/api/questions", authRequired, (req, res) => {
   res.json(payload);
 });
 
+// Questions for guests (no auth required)
+app.get("/api/questions-guest", (req, res) => {
+  const payload = shuffle(questions).map(q => ({ id: q.id, text: q.text }));
+  res.json(payload);
+});
+
 // Submission
 app.post("/api/submit", authRequired, (req, res) => {
   const { answersById } = req.body || {};
@@ -329,6 +335,43 @@ app.post("/api/submit", authRequired, (req, res) => {
   );
 
   res.json({ ok: true });
+});
+
+// Guest submission (no auth required)
+app.post("/api/submit-guest", (req, res) => {
+  const { nickname, answersById } = req.body || {};
+  
+  if (!nickname || typeof nickname !== "string" || nickname.trim().length < 2) {
+    return res.status(400).json({ error: "Apelido inválido." });
+  }
+  
+  if (!answersById || typeof answersById !== "object") {
+    return res.status(400).json({ error: "Formato inválido de respostas." });
+  }
+
+  const { ok, missing } = validateAnswers(questions, answersById);
+  if (!ok) return res.status(400).json({ error: `Respostas incompletas/inválidas.` });
+
+  const { S_M, S_C, S_R } = computeScores(questions, answersById);
+  const { w_M, w_C, w_R } = normalizeAffinities(S_M, S_C, S_R);
+  const { x, y } = computeTriangleCoords(w_M, w_C, w_R);
+
+  db.prepare(`
+    INSERT INTO guest_submissions(nickname, answers_json, S_M, S_C, S_R, w_M, w_C, w_R, x, y)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `).run(
+    nickname.trim(),
+    JSON.stringify(answersById),
+    S_M, S_C, S_R, w_M, w_C, w_R, x, y
+  );
+
+  // Retorna os resultados calculados
+  res.json({ 
+    ok: true,
+    S_M, S_C, S_R,
+    w_M, w_C, w_R,
+    x, y
+  });
 });
 
 app.get("/api/my-latest", authRequired, (req, res) => {
@@ -510,12 +553,13 @@ app.get("/api/admin/db-stats", authRequired, adminOnly, (req, res) => {
     const users = db.prepare("SELECT COUNT(*) as count FROM users").get().count;
     const submissions = db.prepare("SELECT COUNT(*) as count FROM submissions").get().count;
     const invites = db.prepare("SELECT COUNT(*) as count FROM invites").get().count;
+    const guests = db.prepare("SELECT COUNT(*) as count FROM guest_submissions").get()?.count || 0;
     const today = db.prepare(`
       SELECT COUNT(*) as count FROM users 
       WHERE DATE(created_at) = DATE('now')
     `).get().count;
     
-    res.json({ users, submissions, invites, today });
+    res.json({ users, submissions, invites, guests, today });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
