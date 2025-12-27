@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>DTE · Criar Conta</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Diagrama de Tendência Esferal (DTE)</h1>
+
+    <div class="card">
+      <p>
+        Crie sua conta para responder o questionário.
+      </p>
+      <p class="scale-legend" id="invite-detected" style="display:none;color:#22c55e;">
+        ✓ Convite detectado! Crie sua conta para continuar.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Criar conta</h2>
+      <form id="register-form">
+        <div class="question-card">
+          <p class="question-text">Nome</p>
+          <input id="reg-name" type="text" required minlength="2" autocomplete="name"
+            style="width:100%;padding:10px;border-radius:10px;border:1px solid #1f2937;background:#020617;color:#e5e7eb;"/>
+        </div>
+        <div class="question-card">
+          <p class="question-text">E-mail</p>
+          <input id="reg-email" type="email" required autocomplete="email"
+            style="width:100%;padding:10px;border-radius:10px;border:1px solid #1f2937;background:#020617;color:#e5e7eb;"/>
+        </div>
+        <div class="question-card">
+          <p class="question-text">Senha (mínimo 6 caracteres)</p>
+          <input id="reg-password" type="password" required minlength="6" autocomplete="new-password"
+            style="width:100%;padding:10px;border-radius:10px;border:1px solid #1f2937;background:#020617;color:#e5e7eb;"/>
+        </div>
+        <button type="submit">Criar conta</button>
+      </form>
+      <p id="reg-msg" class="scale-legend"></p>
+    </div>
+
+    <div class="card" style="text-align:center;">
+      <p class="scale-legend">Já tem conta?</p>
+      <a href="/" class="button" id="link-login" style="text-decoration:none;background:linear-gradient(135deg, #6366f1, #8b5cf6);">Fazer login</a>
+    </div>
+  </main>
+
+  <script type="module" src="/js/cadastro.js"></script>
+</body>
+</html>

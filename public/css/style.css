@@ -162,3 +162,32 @@ canvas {
 
 a.button{display:inline-block;text-align:center;padding:12px 18px;border-radius:12px;background:#22c55e;color:#07110b;font-weight:700;border:none;}
 a.button:hover{filter:brightness(1.05);}
+
+/* Highlight para perguntas não respondidas */
+.unanswered-highlight {
+  background: rgba(239, 68, 68, 0.15) !important;
+  border-left: 4px solid #ef4444 !important;
+  border-radius: 8px;
+  padding-left: 12px !important;
+  transition: all 0.3s ease;
+}
+
+.question-number {
+  font-weight: 700;
+  color: #a5b4fc;
+}
+
+@keyframes pulse-highlight {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.01); box-shadow: 0 0 20px rgba(239, 68, 68, 0.4); }
+  100% { transform: scale(1); }
+}
+
+/* Estilos para mensagens de erro/sucesso */
+.msg-error {
+  color: #ef4444 !important;
+}
+
+.msg-success {
+  color: #22c55e !important;
+}

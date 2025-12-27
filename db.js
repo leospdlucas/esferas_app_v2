@@ -2,10 +2,17 @@ import Database from "better-sqlite3";
 import fs from "fs";
 import path from "path";
 
-const dataDir = path.join(process.cwd(), "data");
+// Em produção (Render), usa /data para persistência
+// Em desenvolvimento, usa ./data local
+const isProduction = process.env.NODE_ENV === 'production';
+const dataDir = isProduction && fs.existsSync('/data') 
+  ? '/data' 
+  : path.join(process.cwd(), "data");
+
 if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
 
 const dbPath = path.join(dataDir, "app.db");
+console.log(`Database path: ${dbPath}`);
 export const db = new Database(dbPath);
 
 export function migrate() {

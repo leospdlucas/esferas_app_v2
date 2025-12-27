@@ -6,7 +6,7 @@ function setMsg(id, text, isError = false) {
   const el = document.getElementById(id);
   if (el) {
     el.textContent = text || "";
-    el.style.color = isError ? "#ef4444" : "#9ca3af";
+    el.style.color = isError ? "#ef4444" : "#22c55e";
   }
 }
 
@@ -23,9 +23,9 @@ function preserveInviteInLink() {
   const url = new URL(window.location.href);
   const invite = url.searchParams.get('invite');
   if (invite) {
-    const linkCadastro = document.getElementById('link-cadastro');
-    if (linkCadastro) {
-      linkCadastro.href = `/cadastro.html?invite=${encodeURIComponent(invite)}`;
+    const linkLogin = document.getElementById('link-login');
+    if (linkLogin) {
+      linkLogin.href = `/?invite=${encodeURIComponent(invite)}`;
     }
   }
 }
@@ -52,33 +52,50 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  const loginForm = document.getElementById("login-form");
-  if (loginForm) {
-    loginForm.addEventListener("submit", async (e) => {
+  const registerForm = document.getElementById("register-form");
+  if (registerForm) {
+    registerForm.addEventListener("submit", async (e) => {
       e.preventDefault();
-      setMsg("login-msg", "");
+      setMsg("reg-msg", "");
       
-      const submitBtn = loginForm.querySelector('button[type="submit"]');
+      const submitBtn = registerForm.querySelector('button[type="submit"]');
       submitBtn.disabled = true;
-      submitBtn.textContent = "Entrando...";
+      submitBtn.textContent = "Criando conta...";
       
       try {
-        const email = document.getElementById("login-email").value.trim();
-        const password = document.getElementById("login-password").value;
-        const data = await apiFetch("/api/login", {
+        const name = document.getElementById("reg-name").value.trim();
+        const email = document.getElementById("reg-email").value.trim();
+        const password = document.getElementById("reg-password").value;
+        const inviteCode = localStorage.getItem(INVITE_KEY);
+        
+        await apiFetch("/api/register", {
+          method: "POST",
+          body: JSON.stringify({ name, email, password, inviteCode })
+        });
+        
+        setMsg("reg-msg", "✓ Conta criada com sucesso! Fazendo login...");
+        
+        // Auto-login após cadastro
+        const loginData = await apiFetch("/api/login", {
           method: "POST",
           body: JSON.stringify({ email, password })
         });
-        setToken(data.token);
-        if (data.role === "admin") {
+        
+        setToken(loginData.token);
+        
+        // Limpa o código de convite após uso
+        localStorage.removeItem(INVITE_KEY);
+        
+        if (loginData.role === "admin") {
           window.location.href = "/admin-dashboard.html";
         } else {
           window.location.href = "/quiz.html";
         }
+        
       } catch (err) {
-        setMsg("login-msg", err.message, true);
+        setMsg("reg-msg", err.message, true);
         submitBtn.disabled = false;
-        submitBtn.textContent = "Entrar";
+        submitBtn.textContent = "Criar conta";
       }
     });
   }

@@ -10,36 +10,50 @@ function qs(name) {
 document.addEventListener("DOMContentLoaded", async () => {
   const code = (qs("code") || "").trim();
   const msg = document.getElementById("msg");
-  const go = document.getElementById("go");
+  const actionsCard = document.getElementById("actions-card");
+  const btnCadastro = document.getElementById("btn-cadastro");
+  const btnLogin = document.getElementById("btn-login");
 
   if (!code) {
-    msg.textContent = "Convite ausente ou inválido.";
-    go.href = "/";
+    msg.textContent = "❌ Convite ausente ou inválido.";
+    msg.style.color = "#ef4444";
+    actionsCard.style.display = "block";
+    btnCadastro.href = "/cadastro.html";
+    btnLogin.href = "/";
     return;
   }
 
-  // store locally so /register can include it
+  // Armazena o código do convite
   localStorage.setItem(INVITE_KEY, code);
 
-  // If already logged in, just go to quiz
+  // Se já está logado, redireciona direto
   if (getToken()) {
     try {
-      await apiFetch("/api/me");
+      const me = await apiFetch("/api/me");
       if (me.role === "admin") {
-        msg.textContent = "Você está logado como admin. Indo para o painel...";
-        go.href = "/admin-dashboard.html";
-        window.location.href = "/admin-dashboard.html";
+        msg.textContent = "✓ Você está logado como admin. Redirecionando...";
+        msg.style.color = "#22c55e";
+        setTimeout(() => {
+          window.location.href = "/admin-dashboard.html";
+        }, 1000);
       } else {
-        msg.textContent = "Convite registrado. Redirecionando para o questionário...";
-        go.href = "/quiz.html";
-        window.location.href = "/quiz.html";
+        msg.textContent = "✓ Convite aceito! Redirecionando para o questionário...";
+        msg.style.color = "#22c55e";
+        setTimeout(() => {
+          window.location.href = "/quiz.html";
+        }, 1000);
       }
       return;
     } catch {
-      // token invalid; keep going to login/register
+      // Token inválido, continua para login/cadastro
     }
   }
 
-  msg.textContent = "Convite registrado. Clique em “Continuar” para fazer login ou criar cadastro.";
-  go.href = "/?invite=1";
+  msg.textContent = "✓ Convite válido! Crie sua conta ou faça login para continuar.";
+  msg.style.color = "#22c55e";
+  actionsCard.style.display = "block";
+  
+  // Preserva o código do convite nos links
+  btnCadastro.href = `/cadastro.html?invite=${encodeURIComponent(code)}`;
+  btnLogin.href = `/?invite=${encodeURIComponent(code)}`;
 });

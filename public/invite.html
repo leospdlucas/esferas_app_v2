@@ -13,11 +13,15 @@
     <div class="card">
       <p id="msg">Validando convite...</p>
       <p class="scale-legend">
-        Se você já tem conta, faça login. Se não, crie seu cadastro.
+        Você foi convidado para responder o Diagrama de Tendência Esferal (DTE).
       </p>
-      <p class="scale-legend">
-        <a id="go" href="/" style="color:#a5b4fc;text-decoration:none;">Continuar</a>
-      </p>
+    </div>
+
+    <div class="card" id="actions-card" style="display:none;">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+        <a id="btn-cadastro" href="/cadastro.html" class="button" style="text-decoration:none;">Criar conta</a>
+        <a id="btn-login" href="/" class="button" style="text-decoration:none;background:linear-gradient(135deg, #6366f1, #8b5cf6);">Já tenho conta</a>
+      </div>
     </div>
   </main>
   <script type="module" src="/js/invite.js"></script>
