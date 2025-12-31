@@ -160,6 +160,28 @@ function shareTelegram() {
   window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
 }
 
+async function shareInstagram() {
+  // Instagram não tem API de compartilhamento direto
+  // Baixamos a imagem e copiamos o texto para o usuário colar
+  try {
+    const blob = await generateShareImage();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'meu-resultado-dte.png';
+    a.click();
+    URL.revokeObjectURL(url);
+    
+    // Copia o texto para a área de transferência
+    const text = getShareText() + '\n' + getShareUrl();
+    await navigator.clipboard.writeText(text);
+    
+    showToast('Imagem baixada e texto copiado! Cole no Instagram.');
+  } catch {
+    showToast('Erro ao preparar para Instagram');
+  }
+}
+
 function shareLinkedIn() {
   const url = encodeURIComponent(getShareUrl());
   window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
@@ -239,6 +261,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById('share-twitter').addEventListener('click', shareTwitter);
     document.getElementById('share-facebook').addEventListener('click', shareFacebook);
     document.getElementById('share-telegram').addEventListener('click', shareTelegram);
+    document.getElementById('share-instagram').addEventListener('click', shareInstagram);
     document.getElementById('share-linkedin').addEventListener('click', shareLinkedIn);
     document.getElementById('download-image').addEventListener('click', downloadImage);
     document.getElementById('copy-result').addEventListener('click', copyResultText);
